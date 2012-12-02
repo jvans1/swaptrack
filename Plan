@@ -1,0 +1,10 @@
+Models: 
+  User
+  Tournament
+  Request
+
+
+User can make a swap Request
+User can receive a swap Request
+User can accept or reject a receieved request
+User can edit a swap request and send back for approval
