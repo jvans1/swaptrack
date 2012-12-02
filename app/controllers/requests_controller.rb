@@ -41,6 +41,8 @@ class RequestsController < ApplicationController
   # POST /requests.json
   def create
     @request = Request.new(params[:request])
+    #@request = current_user.requests.build(params[:request])
+
 
     respond_to do |format|
       if @request.save
