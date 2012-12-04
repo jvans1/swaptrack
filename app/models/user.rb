@@ -1,8 +1,10 @@
 class User < ActiveRecord::Base
   attr_accessible :name
-  has_many :requests, :dependent => :destroy 
+  has_many :requests
   has_many :tournaments, :through=> :requests
-  has_many :inbound_requests, :class_name=>"Request", :foreign_key=> "requester_id"
+  has_many :inbound_requests, :class_name=>"Request", :foreign_key=> "receiver_id"
+  has_many :prizes
+
 
   def approve(request)
     request.accepted if authorized_to_update_request?(request)
@@ -11,7 +13,17 @@ class User < ActiveRecord::Base
     request.denied if authorized_to_update_request?(request)
   end
 
+  def total_prizes
+     self.prizes.all.select{|p| p.user_id == 1}.map { |p| p.amount }.sum
+  end
+  def send_request(request)
+    self.requests << request  
+    request.receiver.inbound_requests << request
+  end
+  
+  private 
   def authorized_to_update_request?(request)
     inbound_requests.include?(request)
   end
+
 end

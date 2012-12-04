@@ -1,4 +1,4 @@
-require 'spec_helper'
+# require 'spec_helper'
 
 # describe "Tournaments" do
 #   describe "GET /tournaments" do

@@ -1,5 +1,23 @@
 <p id="notice"><%= notice %></p>
-
-
+<h1>Welcome, <%=@user.name%>
+<table>
+    <tr><td>From </td>
+     <td>Tournament </td>
+     <td>Piece Size </td>
+     <td>Status</td>
+   </tr>
+  <tbody>
+    <%@requests.each do |request|%>
+    <tr>
+      <td><%=request.user.name if request.user%> </td>
+      <td><%=request.tournament.name if request.tournament%> </td>
+      <td><%=request.piece_size%> </td>
+      <td><%=request.status_name%></td>
+    </tr>
+  </tbody>
+    <%end%>
+</table>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+

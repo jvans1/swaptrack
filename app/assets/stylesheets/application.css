@@ -8,6 +8,19 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require bootstrap-responsive.min
+ *= require bootstrap.min
+ *= require colorpicker
+ *= require datepicker
+ *= require fullcalendar
+ *= require icon-style
+ *= require molle
+ *= require radmin-green
+ *= require radmin-pink
+ *= require radmin-plugins
+ *= require radmin-responsive
+ *= require radmin
+
  *= require_self
  *= require_tree .
  */

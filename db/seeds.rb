@@ -5,3 +5,24 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+u1 =User.create(:name=>"James")
+u2 = User.create(:name=>"Dani")
+u3 = User.create(:name=>"Mike")
+
+t = Tournament.create(:name=>"Main Event", :buy_in=>10000)
+t1 = Tournament.create(:name=>"5k 6max", :buy_in=>5000)
+t2 = Tournament.create(:name=>"2.5k Shootout", :buy_in=>2500)
+
+r = Request.create(:tournament =>t, :piece_size => 5, :receiver=> u2)
+r1 = Request.create(:tournament =>t1, :piece_size => 5, :receiver=> u2)
+r2 = Request.create(:tournament =>t2, :piece_size => 10, :receiver=> u2)
+r3 = Request.create(:tournament =>t, :piece_size => 2, :receiver=> u2)
+r4 = Request.create(:tournament =>t1, :piece_size =>10, :receiver=> u2)
+
+u1.send_request(r)
+u1.send_request(r1) 
+u3.send_request(r2)
+u3.send_request(r3)
+u3.send_request(r4)

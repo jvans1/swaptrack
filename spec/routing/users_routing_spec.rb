@@ -3,8 +3,8 @@ require "spec_helper"
 describe UsersController do
   describe "routing" do
 
-    it "routes to #index" do
-      get("/users").should route_to("users#index")
+    it "does not expose a list of profiles" do
+      {:get => "/users" }.should_not be_routable
     end
 
     it "routes to #new" do
@@ -30,6 +30,12 @@ describe UsersController do
     it "routes to #destroy" do
       delete("/users/1").should route_to("users#destroy", :id => "1")
     end
+
+    it "routes to requests#index" do
+      get("/users/1/requests").should routes_to("requests#index", :user_id=>"1")
+    end
+
+
 
   end
 end

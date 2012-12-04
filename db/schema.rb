@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202034743) do
+ActiveRecord::Schema.define(:version => 20121203141847) do
+
+  create_table "prizes", :force => true do |t|
+    t.integer  "amount"
+    t.integer  "tournament_id"
+    t.date     "date"
+    t.integer  "place"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "user_id"
+  end
 
   create_table "requests", :force => true do |t|
     t.integer  "piece_size"
@@ -19,8 +29,8 @@ ActiveRecord::Schema.define(:version => 20121202034743) do
     t.integer  "user_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-    t.integer  "requester_id"
     t.integer  "status"
+    t.integer  "receiver_id"
   end
 
   create_table "tournaments", :force => true do |t|
@@ -30,6 +40,8 @@ ActiveRecord::Schema.define(:version => 20121202034743) do
     t.integer  "prize"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.date     "date"
+    t.integer  "entries"
   end
 
   create_table "users", :force => true do |t|

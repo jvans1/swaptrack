@@ -1,5 +1,12 @@
 <p id="notice"><%= notice %></p>
+<ul>
+  <li><%=@request.piece_size%></li>
+  <li><%=@request.tournament.name %></li>
+</ul>
+
 
 
 <%= link_to 'Edit', edit_request_path(@request) %> |
 <%= link_to 'Back', requests_path %>
+
+

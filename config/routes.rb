@@ -1,9 +1,11 @@
 Swaptrack::Application.routes.draw do
-  resources :requests
-
+  
+  get "users/:id/requests"=> "requests#index"
   resources :tournaments
 
-  resources :users
+  resources :users, :except=>:index
+
+  resources :requests
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

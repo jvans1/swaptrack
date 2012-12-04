@@ -6,7 +6,6 @@ describe Request do
     @r = Request.new
   end
   after :each do
-
     Request.all.each{|r| r.destroy}
   end
 

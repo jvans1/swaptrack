@@ -1,0 +1,5 @@
+<%= form_for request do |f|%>
+<%= f.submit 'Accept', :value => 'Accept', :name=>"status" %>
+<%= f.submit "Reject", :value=>"Deny", :name=>"status"%>
+<%= f.submit "Edit", :value=>"Edit", :name=>"status"%>
+<%end%>

@@ -3,7 +3,6 @@ class RequestsController < ApplicationController
   # GET /requests.json
   def index
     @requests = Request.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @requests }
@@ -35,6 +34,7 @@ class RequestsController < ApplicationController
   # GET /requests/1/edit
   def edit
     @request = Request.find(params[:id])
+
   end
 
   # POST /requests
@@ -59,12 +59,33 @@ class RequestsController < ApplicationController
   # PUT /requests/1.json
   def update
     @request = Request.find(params[:id])
-
+    @receiver = @request.receiver
+    @sender = @request.user
     respond_to do |format|
-      if @request.update_attributes(params[:request])
-        format.html { redirect_to @request, notice: 'Request was successfully updated.' }
+      if params[:status] == "Accepted" #|| @request.update_attributes(params[:request])
+        @request.accepted
+        @request.save
+        format.html { redirect_to requests_path, notice: 'Request was accepted.' }
+        format.json { head :no_content }
+      elsif params[:status] =="Deny"
+        @request.denied
+        @request.save
+        format.html { redirect_to requests_path, notice: 'Request was denied.' }
+        format.json { head :no_content }
+      elsif params[:status] =="Edit"
+        @request.edit
+        @request.save
+        format.html { redirect_to edit_request_path, notice: 'Please Edit the request and send for approval' }
+        format.json { head :no_content }
+      elsif @request.update_attributes(params[:request])
+        @request.user = @receiver
+        @request.receiver = @sender
+        @request.save
+        @receiver.send_request(@request)
+        format.html { redirect_to requests_path, notice: 'edited request sent for approval.' }
         format.json { head :no_content }
       else
+        
         format.html { render action: "edit" }
         format.json { render json: @request.errors, status: :unprocessable_entity }
       end
