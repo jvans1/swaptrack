@@ -1,9 +1,14 @@
 class User < ActiveRecord::Base
-  attr_accessible :name
+  has_secure_password
+
+  validates_presence_of :password, :on => :create
+  validates_presence_of :email, :on => :create
+  attr_accessible :name, :email, :password, :password_confirmation
   has_many :requests
   has_many :tournaments, :through=> :requests
   has_many :inbound_requests, :class_name=>"Request", :foreign_key=> "receiver_id"
   has_many :prizes
+  
 
 
   def approve(request)
@@ -20,7 +25,7 @@ class User < ActiveRecord::Base
     self.requests << request  
     request.receiver.inbound_requests << request
   end
-  
+
   private 
   def authorized_to_update_request?(request)
     inbound_requests.include?(request)

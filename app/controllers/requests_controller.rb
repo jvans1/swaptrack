@@ -1,8 +1,9 @@
 class RequestsController < ApplicationController
   # GET /requests
   # GET /requests.json
+  before_filter :login_required
   def index
-    @requests = Request.all
+    @requests = current_user.inbound_requests
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @requests }
@@ -24,7 +25,6 @@ class RequestsController < ApplicationController
   # GET /requests/new.json
   def new
     @request = Request.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @request }
@@ -41,8 +41,8 @@ class RequestsController < ApplicationController
   # POST /requests.json
   def create
     @request = Request.new(params[:request])
-    #@request = current_user.requests.build(params[:request])
-
+    @request = current_user.requests.build(params[:request])
+    @request.init
 
     respond_to do |format|
       if @request.save
@@ -62,27 +62,27 @@ class RequestsController < ApplicationController
     @receiver = @request.receiver
     @sender = @request.user
     respond_to do |format|
-      if params[:status] == "Accepted" #|| @request.update_attributes(params[:request])
+      if params[:status] == "Accept" #|| @request.update_attributes(params[:request])
         @request.accepted
         @request.save
-        format.html { redirect_to requests_path, notice: 'Request was accepted.' }
+        format.html { redirect_to user_requests_path, notice: 'Request was accepted.' }
         format.json { head :no_content }
       elsif params[:status] =="Deny"
         @request.denied
         @request.save
-        format.html { redirect_to requests_path, notice: 'Request was denied.' }
+        format.html { redirect_to user_requests_path, notice: 'Request was denied.' }
         format.json { head :no_content }
       elsif params[:status] =="Edit"
         @request.edit
         @request.save
-        format.html { redirect_to edit_request_path, notice: 'Please Edit the request and send for approval' }
+        format.html { redirect_to edit_user_request_path(@request), notice: 'Please Edit the request and send for approval' }
         format.json { head :no_content }
       elsif @request.update_attributes(params[:request])
         @request.user = @receiver
         @request.receiver = @sender
         @request.save
         @receiver.send_request(@request)
-        format.html { redirect_to requests_path, notice: 'edited request sent for approval.' }
+        format.html { redirect_to user_requests_path, notice: 'edited request sent for approval.' }
         format.json { head :no_content }
       else
         

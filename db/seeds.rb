@@ -7,9 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-u1 =User.create(:name=>"James")
-u2 = User.create(:name=>"Dani")
-u3 = User.create(:name=>"Mike")
+u1 = User.create(:name=>"James", :email=>"james@james.com", :password=>"poker")
+u2 = User.create(:name=>"Dani", :email=>"dani@dani.com",:password=>"poker")
+u3 = User.create(:name=>"Mike", :email=>"mike@mike.com",:password=>"poker")
 
 t = Tournament.create(:name=>"Main Event", :buy_in=>10000)
 t1 = Tournament.create(:name=>"5k 6max", :buy_in=>5000)

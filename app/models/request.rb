@@ -3,10 +3,12 @@ class Request < ActiveRecord::Base
   belongs_to :user
   belongs_to :tournament
   belongs_to :receiver, :class_name => "User", :foreign_key => "receiver_id"
-  after_initialize :init 
   STATUS_CODES = {:accepted => 1, :denied => -1, :edited =>2, :pending=>0}
 
   def init
+    self.user = current_user
+    current_user.requests << @request
+    self.status = 0
   end
 
   def accepted 

@@ -10,10 +10,11 @@
       </ul>
     </div>
   <% end %>
-  <h3><%=@request.tournament.name%></h3>
-  <h3><%=@request.user.name%></h3>
-  <%=f.text_field :piece_size, :value=>"#{@request.piece_size}"%>
-  <div class="actions">
-    <%= f.submit :value=>"Send for approval" %>
-  </div>
-<% end %>
+  <%=f.label :name %>
+  <%=f.text_field :user %>
+  <%=f.label :tournament%>
+  <%=f.text_field :tournament %>
+  <%=f.label :piece_size%>
+  <%=f.text_field :piece_size%>
+
+<%end%>

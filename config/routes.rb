@@ -1,11 +1,14 @@
 Swaptrack::Application.routes.draw do
   
-  get "users/:id/requests"=> "requests#index"
+  get "login" => "sessions#new"
+  get "signup" =>"users#new"
+  get "logout" => "sessions#destroy"
+  resources :sessions
   resources :tournaments
 
-  resources :users, :except=>:index
-
-  resources :requests
+  resources :users, :except=>:index do 
+    resources :requests
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

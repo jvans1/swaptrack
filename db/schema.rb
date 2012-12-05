@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121203141847) do
+ActiveRecord::Schema.define(:version => 20121204195407) do
 
   create_table "prizes", :force => true do |t|
     t.integer  "amount"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(:version => 20121203141847) do
     t.datetime "updated_at",                                                            :null => false
     t.string   "name"
     t.string   "#<ActiveRecord::ConnectionAdapters::TableDefinition:0x007fd71e6ac2d0>"
+    t.string   "password_digest"
+    t.string   "email"
   end
 
 end
