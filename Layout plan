@@ -1,0 +1,14 @@
+User show page
+
+3 tabs
+  Calendar
+  Dashboard
+    -Overall
+      -Active Swaps/pieces
+      -Money owed to you
+      -money you owe
+      -People you owe
+      -People who owe you
+    -inbound requests
+    -sent requests
+  Payments

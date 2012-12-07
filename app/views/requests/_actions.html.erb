@@ -1,5 +1,7 @@
-<%= form_for request, {url: "/users/#{request.user.id}/requests/#{request.id}"} do |f|%>
+<%= form_for request, {url: user_request_path(current_user, request)} do |f|%>
 <%= f.submit 'Accept', :value => 'Accept', :name=>"status" %>
 <%= f.submit "Deny", :value=>"Deny", :name=>"status"%>
-<%= f.submit "Edit", :value=>"Edit", :name=>"status"%>
+  <% if request.updateable?%> 
+    <%= f.submit "Edit", :value=>"Edit", :name=>"status"%>
+  <%end%>
 <%end%>

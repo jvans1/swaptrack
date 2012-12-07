@@ -1,17 +1,18 @@
 <h4 id="notice"><%= notice%></h4>
-<h1>Listing requests</h1>
 
-<table>
+
+<table class="span4">
+  <h1>Inbound requests</h1>
   <tr>
     <th>Made by   </th>
-    <th>For Tournnament   </th>
+    <th>For Tournament   </th>
     <th>Piece   </th>
     <th>Status   </th>
     <th>Decision   </th>
     <th></th>
   </tr>
 
-<% @requests.each do |request| %>
+<% @inbound_requests.each do |request| %>
   <tr>
     <td><%=request.user.name if request.user%> </td>
     <td><%=request.tournament.name if request.tournament%> </td>
@@ -27,4 +28,28 @@
 
 <br />
 
-<%#= link_to 'New Request', new_request_path %>
+
+<table class="span4">
+  <h1>Outbound requests</h1>
+
+  <tr>
+    <th>For Tournament   </th>
+    <th>Piece   </th>
+    <th>Status   </th>
+  </tr>
+
+<% @outbound_requests.each do |request| %>
+  <tr>
+    <td><%=request.tournament.name if request.tournament%> </td>
+    <td><%=request.piece_size%> </td>
+    <td><%=request.status_name%> </td>
+    </td>
+    <td><%##= link_to 'show', user_request(request) %></td>
+    <td><%#= link_to 'Edit', edit_user_request_path(request) %></td>
+    <td><%#= link_to 'Destroy', user_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<%= link_to 'New Request', new_user_request_path %>
