@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121207201741) do
+ActiveRecord::Schema.define(:version => 20121207205355) do
 
   create_table "prizes", :force => true do |t|
     t.integer  "amount"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20121207201741) do
     t.integer  "user_id"
   end
 
-  create_table "requests", :force => true do |t|
+  create_table "recuests", :force => true do |t|
     t.integer  "percent"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false

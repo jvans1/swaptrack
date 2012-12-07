@@ -1,4 +1,4 @@
-class Swap < Request
+class Swap < Recuest
   attr_accessible :percent, :tournament
   
 end

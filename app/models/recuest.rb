@@ -1,11 +1,13 @@
-class Request < ActiveRecord::Base
+class Recuest < ActiveRecord::Base
   attr_accessible :receiver, :type
   validates_presence_of :user, :receiver, :on => :create
 
-  belongs_to :user, :inverse_of => :requests
-
+#fuck does this do?
+  
+#end
+  belongs_to :user
   belongs_to :tournament
-  belongs_to :receiver, :class_name=> "User", :foreign_key =>"receiver_id"
+  belongs_to :receiver, :class_name=> "User", :foreign_key => "receiver_id"
   
   STATUS_CODES = {:accepted => 1, :denied => -1, :edited =>2, :pending=>0}
   def init

@@ -7,12 +7,12 @@
      <td>Status</td>
    </tr>
   <tbody>
-    <%@requests.each do |request|%>
+    <%@recuests.each do |recuest|%>
     <tr>
-      <td><%=request.user.name if request.user%> </td>
-      <td><%=request.tournament.name if request.tournament%> </td>
-      <td><%=request.piece_size%> </td>
-      <td><%=request.status_name%></td>
+      <td><%=recuest.user.name if recuest.user%> </td>
+      <td><%=recuest.tournament.name if recuest.tournament%> </td>
+      <td><%=recuest.size if recuest.type == 'swap' || recuest.type == 'piece' %> </td>
+      <td><%=recuest.status_name%></td>
     </tr>
   </tbody>
     <%end%>

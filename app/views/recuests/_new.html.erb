@@ -1,10 +1,10 @@
-<%= form_for(@request, {url: user_requests_path}) do |f| %>
-  <% if @request.errors.any? %>
+<%= form_for(@recuest, {url: user_recuests_path}) do |f| %>
+  <% if @recuest.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
+      <h2><%= pluralize(@recuest.errors.count, "error") %> prohibited this request from being saved:</h2>
 
       <ul>
-      <% @request.errors.full_messages.each do |msg| %>
+      <% @recuest.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>

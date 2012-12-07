@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_presence_of :email, :on => :create
   attr_accessible :name, :email, :password, :password_confirmation
-  has_many :requests
-  has_many :inbound_requests, :class_name=> "Request", :foreign_key=> "receiver_id"
+  has_many :recuests
+  has_many :inbound_requests, :class_name=> "Recuest", :foreign_key=> "receiver_id"
   has_many :prizes
 
   def approve(request)

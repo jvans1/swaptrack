@@ -1,3 +1,3 @@
-class Lastlonger < Request
+class Lastlonger < Recuest
   attr_accessible :amount, :tournament
 end

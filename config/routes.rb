@@ -11,7 +11,7 @@ Swaptrack::Application.routes.draw do
   resources :tournaments
 
   resources :users, :except=>:index do 
-    resources :requests
+    resources :recuests
     resources :pieces 
     resources :swaps
     resources :lastlongers

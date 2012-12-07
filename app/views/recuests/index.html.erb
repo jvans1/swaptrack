@@ -1,0 +1,59 @@
+<h4 id="notice"><%= notice%></h4>
+
+
+<table class="span4">
+  <h1>Inbound requests</h1>
+  <tr>
+    <th>Made by   </th>
+    <th>For Tournament   </th>
+    <th>Piece   </th>
+    <th>Status   </th>
+    <th>Decision   </th>
+    <th></th>
+  </tr>
+
+<% @inbound_requests.each do |recuest| %>
+  <tr>
+    <td><%=recuest.user.name if recuest.user%> </td>
+    <td><%=recuest.tournament.name if recuest.tournament%> </td>
+    <td><%=recuest.percent%> </td>
+    <td><%=recuest.status_name%> </td>
+    <td><%= render 'actions', :recuest => recuest %></td>
+    <td><%##= link_to 'show', user_request(recuest) %></td>
+    <td><%#= link_to 'Edit', edit_user_request_path(recuest) %></td>
+    <td><%#= link_to 'Destroy', user_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
+<table class="span4">
+  <h1>Outbound requests</h1>
+
+  <tr>
+    <th>For Tournament   </th>
+    <th>Type   </th>
+    <th>Piece   </th>
+    <th>Status   </th>
+  </tr>
+
+<% @outbound_requests.each do |recuest| %>
+  <tr>
+    <td><%=recuest.tournament.name if recuest.tournament%> </td>
+    <td><%=recuest.type%></td>
+    <td><%=recuest.percent%> </td>
+    <td><%=recuest.status_name%> </td>
+    </td>
+    <td><%##= link_to 'show', user_request(recuest) %></td>
+    <td><%#= link_to 'Edit', edit_user_request_path(recuest) %></td>
+    <td><%#= link_to 'Destroy', user_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<%#= link_to 'New Swap', new_user_swap_path %>
+<%#= link_to 'New Piece', new_user_piece_path%>
+<%#= link_to "New LastLonger", new_user_lastlonger_path%>
