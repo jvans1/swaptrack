@@ -2,6 +2,8 @@ Swaptrack::Application.routes.draw do
   
 
 
+  
+
   get "login" => "sessions#new"
   get "signup" =>"users#new"
   get "logout" => "sessions#destroy"
@@ -12,6 +14,7 @@ Swaptrack::Application.routes.draw do
     resources :requests
     resources :pieces 
     resources :swaps
+    resources :lastlongers
 
   end
 

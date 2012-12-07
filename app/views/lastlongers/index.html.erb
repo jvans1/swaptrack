@@ -1,0 +1,21 @@
+<h1>Listing lastlongers</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @lastlongers.each do |lastlonger| %>
+  <tr>
+    <td><%= link_to 'Show', lastlonger %></td>
+    <td><%= link_to 'Edit', edit_lastlonger_path(lastlonger) %></td>
+    <td><%= link_to 'Destroy', lastlonger, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Lastlonger', new_lastlonger_path %>

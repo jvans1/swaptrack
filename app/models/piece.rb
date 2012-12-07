@@ -1,3 +1,3 @@
 class Piece < Request
-  # attr_accessible :title, :body
+  attr_accessible :percent
 end
