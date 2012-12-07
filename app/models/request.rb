@@ -1,10 +1,12 @@
 class Request < ActiveRecord::Base
-  attr_accessible :piece_size, :receiver
+  attr_accessible :receiver, :type
   validates_presence_of :user, :receiver, :on => :create
 
-  belongs_to :user
+  belongs_to :user, :inverse_of => :requests
+
   belongs_to :tournament
   belongs_to :receiver, :class_name=> "User", :foreign_key =>"receiver_id"
+  
   STATUS_CODES = {:accepted => 1, :denied => -1, :edited =>2, :pending=>0}
   def init
     self.status = 0

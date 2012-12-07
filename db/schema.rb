@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121207193613) do
+ActiveRecord::Schema.define(:version => 20121207201741) do
 
   create_table "prizes", :force => true do |t|
     t.integer  "amount"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20121207193613) do
     t.integer  "user_id"
     t.integer  "receiver_id"
     t.integer  "amount"
+    t.string   "type"
   end
 
   create_table "tournaments", :force => true do |t|
@@ -48,11 +49,9 @@ ActiveRecord::Schema.define(:version => 20121207193613) do
     t.datetime "created_at",                                                            :null => false
     t.datetime "updated_at",                                                            :null => false
     t.string   "name"
-    t.string   "#<ActiveRecord::ConnectionAdapters::TableDefinition:0x007fdfdd7df9a0>"
+    t.string   "#<ActiveRecord::ConnectionAdapters::TableDefinition:0x007fa02d5fe7e8>"
     t.string   "password_digest"
     t.string   "email"
-    t.integer  "swap_receiver_id"
-    t.integer  "piece_receiver_id"
     t.integer  "inbound_requests"
   end
 

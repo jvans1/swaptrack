@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
      self.prizes.all.select{|p| p.user_id == 1}.map { |p| p.amount }.sum
   end
   def send_request(request)
-    self.requests << request  
+    self.requests << request
     request.receiver.inbound_requests << request
   end
 
