@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :tournaments, :through=> :requests
   has_many :inbound_requests, :class_name=>"Request", :foreign_key=> "receiver_id"
   has_many :prizes
+  has_many :pieces
+  has_many :inbound_pieces, :class_name=>"Piece", :foreign_key=> "piece_receiver_id"
   
 
 

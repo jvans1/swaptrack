@@ -34,6 +34,7 @@
 
   <tr>
     <th>For Tournament   </th>
+    <th>Type   </th>
     <th>Piece   </th>
     <th>Status   </th>
   </tr>
@@ -41,6 +42,7 @@
 <% @outbound_requests.each do |request| %>
   <tr>
     <td><%=request.tournament.name if request.tournament%> </td>
+    <td><%=request.type%></td>
     <td><%=request.piece_size%> </td>
     <td><%=request.status_name%> </td>
     </td>
@@ -52,4 +54,5 @@
 </table>
 
 
-<%= link_to 'New Request', new_user_request_path %>
+<%= link_to 'New Swap', new_user_request_path %>
+<%= link_to 'New Piece', new_user_piece_path%>

@@ -1,0 +1,22 @@
+<%= form_for @piece, {url: user_pieces_path} do |f| %>
+  <% if @piece.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@piece.errors.count, "error") %> prohibited this piece from being saved:</h2>
+
+      <ul>
+      <%@piece.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <label>Send To</label>
+  <input type="text" name="name">
+  <%=f.label :size%>
+  <%=f.text_field :size%>
+  <label>Tournament</label>
+  <input type="text" name="tournament_name">
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
