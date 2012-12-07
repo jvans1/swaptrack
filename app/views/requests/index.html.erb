@@ -16,7 +16,7 @@
   <tr>
     <td><%=request.user.name if request.user%> </td>
     <td><%=request.tournament.name if request.tournament%> </td>
-    <td><%=request.piece_size%> </td>
+    <td><%=request.percent%> </td>
     <td><%=request.status_name%> </td>
     <td><%= render 'actions', :request => request %></td>
     <td><%##= link_to 'show', user_request(request) %></td>
@@ -43,7 +43,7 @@
   <tr>
     <td><%=request.tournament.name if request.tournament%> </td>
     <td><%=request.type%></td>
-    <td><%=request.piece_size%> </td>
+    <td><%=request.percent%> </td>
     <td><%=request.status_name%> </td>
     </td>
     <td><%##= link_to 'show', user_request(request) %></td>
@@ -54,5 +54,5 @@
 </table>
 
 
-<%= link_to 'New Swap', new_user_request_path %>
+<%= link_to 'New Swap', new_user_swap_path %>
 <%= link_to 'New Piece', new_user_piece_path%>

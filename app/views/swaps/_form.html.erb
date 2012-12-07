@@ -1,0 +1,22 @@
+<%= form_for(@swap) do |f| %>
+  <% if @swap.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@swap.errors.count, "error") %> prohibited this swap from being saved:</h2>
+
+      <ul>
+      <% @swap.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <label>Send To:</label>
+  <input type="text" name="name">
+  <%=f.label :percent%>
+  <%=f.text_field :percent%>
+  <label>Tournament</label>
+  <input type="text" name="tournament">
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

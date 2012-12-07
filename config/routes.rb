@@ -1,6 +1,7 @@
 Swaptrack::Application.routes.draw do
   
 
+
   get "login" => "sessions#new"
   get "signup" =>"users#new"
   get "logout" => "sessions#destroy"
@@ -10,6 +11,8 @@ Swaptrack::Application.routes.draw do
   resources :users, :except=>:index do 
     resources :requests
     resources :pieces 
+    resources :swaps
+
   end
 
   # The priority is based upon order of creation:

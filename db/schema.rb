@@ -11,14 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121207152731) do
-
-  create_table "pieces", :force => true do |t|
-    t.integer  "size"
-    t.integer  "tournament_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
+ActiveRecord::Schema.define(:version => 20121207191607) do
 
   create_table "prizes", :force => true do |t|
     t.integer  "amount"
@@ -31,12 +24,11 @@ ActiveRecord::Schema.define(:version => 20121207152731) do
   end
 
   create_table "requests", :force => true do |t|
-    t.integer  "piece_size"
-    t.integer  "tournament_id"
-    t.integer  "user_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer  "percent"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "status"
+    t.integer  "user_id"
     t.integer  "receiver_id"
   end
 
@@ -55,9 +47,12 @@ ActiveRecord::Schema.define(:version => 20121207152731) do
     t.datetime "created_at",                                                            :null => false
     t.datetime "updated_at",                                                            :null => false
     t.string   "name"
-    t.string   "#<ActiveRecord::ConnectionAdapters::TableDefinition:0x007fd71e6ac2d0>"
+    t.string   "#<ActiveRecord::ConnectionAdapters::TableDefinition:0x007fdfdd7df9a0>"
     t.string   "password_digest"
     t.string   "email"
+    t.integer  "swap_receiver_id"
+    t.integer  "piece_receiver_id"
+    t.integer  "inbound_requests"
   end
 
 end

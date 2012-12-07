@@ -1,1 +1,8 @@
 challenges
+  Request
+    swap
+    piece
+    prop
+  How to design structure
+    all need reqeusts behaviour
+    want to say user.requests and get all swaps/pieces/props
