@@ -24,8 +24,26 @@ class RecuestsController < ApplicationController
 
   # GET /recuests/new
   # GET /recuests/new.json
-  def new
+  def new_swap
     @recuest = Recuest.new
+    @recuest.type = 'Swap'
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @recuest }
+    end
+  end
+  def new_piece
+    @recuest = Recuest.new
+    @recuest.type = 'Piece'
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @recuest }
+    end
+  end 
+
+  def new_lastlonger
+    @recuest = Recuest.new
+    @recuest.type = 'Lastlonger'
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @recuest }

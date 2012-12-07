@@ -1,0 +1,22 @@
+<%= form_for(@recuest, {url: user_recuests_path}) do |f| %>
+  <% if @recuest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@recuest.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+      <% @recuest.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <label>Send To</label>
+  <input type="text" name="name">
+  <%=f.label :tournament%>
+  <%=f.text_field :tournament %>
+  <%=f.label :percent%>
+  <%=f.text_field :percent%>
+  <%=f.hidden_field :type, :value=>"Piece"%>
+  <%=f.submit :send_request%>
+
+<%end%>

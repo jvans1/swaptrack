@@ -1,5 +1,5 @@
 class Recuest < ActiveRecord::Base
-  attr_accessible :receiver, :type
+  attr_accessible :receiver, :type, :percent, :tournament
   validates_presence_of :user, :receiver, :on => :create
 
 #fuck does this do?
@@ -34,3 +34,5 @@ class Recuest < ActiveRecord::Base
   end
 
 end
+
+

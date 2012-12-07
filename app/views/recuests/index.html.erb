@@ -54,6 +54,6 @@
 </table>
 
 
-<%#= link_to 'New Swap', new_user_swap_path %>
-<%#= link_to 'New Piece', new_user_piece_path%>
-<%#= link_to "New LastLonger", new_user_lastlonger_path%>
+<%= link_to 'New Swap', "/users/#{current_user.id}/recuests/new_swap" %>
+<%= link_to 'New Piece', "/users/#{current_user.id}/recuests/new_piece"%>
+<%= link_to "New LastLonger", "/users/#{current_user.id}/recuests/new_lastlonger"%>

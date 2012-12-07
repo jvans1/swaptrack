@@ -4,18 +4,17 @@ Swaptrack::Application.routes.draw do
 
   
 
-  get "login" => "sessions#new"
-  get "signup" =>"users#new"
-  get "logout" => "sessions#destroy"
+  get "/login" => "sessions#new"
+  get "/signup" =>"users#new"
+  get "/logout" => "sessions#destroy"
+  get "/users/:user_id/recuests/new_swap" => "recuests#new_swap", :as => "new_user_swap_path"
+  get "/users/:user_id/recuests/new_piece" => "recuests#new_piece", :as => "new_user_piece_path"
+  get "/users/:user_id/recuests/new_lastlonger" => "recuests#new_lastlonger", :as => "new_user_lastlonger_path"
   resources :sessions
   resources :tournaments
 
   resources :users, :except=>:index do 
     resources :recuests
-    resources :pieces 
-    resources :swaps
-    resources :lastlongers
-
   end
 
   # The priority is based upon order of creation:

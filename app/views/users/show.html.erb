@@ -11,7 +11,7 @@
     <tr>
       <td><%=recuest.user.name if recuest.user%> </td>
       <td><%=recuest.tournament.name if recuest.tournament%> </td>
-      <td><%=recuest.size if recuest.type == 'swap' || recuest.type == 'piece' %> </td>
+      <td><%=recuest.amount if recuest.type == 'Swap' || recuest.type == 'Piece' %> </td>
       <td><%=recuest.status_name%></td>
     </tr>
   </tbody>

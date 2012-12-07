@@ -7,24 +7,24 @@ class User < ActiveRecord::Base
   has_many :inbound_requests, :class_name=> "Recuest", :foreign_key=> "receiver_id"
   has_many :prizes
 
-  def approve(request)
-    request.accepted if authorized_to_update_request?(request)
+  def approve(recuest)
+    recuest.accepted if authorized_to_update_request?(recuest)
   end
-  def deny(request)
-    request.denied if authorized_to_update_request?(request)
+  def deny(recuest)
+    recuest.denied if authorized_to_update_request?(recuest)
   end
 
   def total_prizes
      self.prizes.all.select{|p| p.user_id == 1}.map { |p| p.amount }.sum
   end
-  def send_request(request)
-    self.requests << request
-    request.receiver.inbound_requests << request
+  def send_request(recuest)
+    self.recuests << recuest
+    recuest.receiver.inbound_requests << recuest
   end
 
   private 
-  def authorized_to_update_request?(request)
-    inbound_requests.include?(request)
+  def authorized_to_update_request?(recuest)
+    inbound_requests.include?(recuest)
   end
 
 end
