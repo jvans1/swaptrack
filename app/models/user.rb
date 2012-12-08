@@ -22,6 +22,22 @@ class User < ActiveRecord::Base
     recuest.receiver.inbound_requests << recuest
   end
 
+  def swaps
+    inbound = inbound_requests.select{ |t| t.type == "Swap" && t.status_name =="accepted"}
+    outbound = recuests.select{ |t| t.type == "Swap" && t.status_name =="accepted"}
+    total = inbound + outbound
+  end
+
+  def pieces
+    recuests.select{ |t| t.type == "Piece" && t.status_name =="accepted"}
+  end
+  
+  def lastlongers
+    inbound = inbound_requests.select{ |t| t.type == "Lastlonger" && t.status_name =="accepted"}
+    outbound = recuests.select{ |t| t.type == "Lastlonger" && t.status_name =="accepted"}
+    total = inbound + outbound  
+  end
+
   private 
   def authorized_to_update_request?(recuest)
     inbound_requests.include?(recuest)

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -43,13 +44,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">Swaptrack</a>
+          </a><% if current_user%>
+              <%= link_to "Swaptrack", user_path(current_user), :class=>"brand"%>          
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Requests", user_recuests_path(current_user) if current_user  %></li>
+              <li><%= link_to "Requests", user_recuests_path(current_user)%></li>
               <li><%= link_to "Link2", "/path2"  %></li>
               <li><%= link_to "Logout", "/logout"  %></li>
+              <%end%>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

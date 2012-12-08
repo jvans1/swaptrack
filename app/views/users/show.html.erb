@@ -1,5 +1,35 @@
 <p id="notice"><%= notice %></p>
-<h1>Welcome, <%=@user.name%></h1>
+<h1>Welcome, <%=@user.name%>!</h1>
+
+<div class="dashboard">
+  <div class="minidash">
+    <span class="title-name">Swaps</span>
+    <p><%=current_user.swaps.count%></p>
+
+  </div>
+  <div class="minidash">
+    <span class="title-name">Pieces</span>
+    <p><%=current_user.pieces.count%></p>
+  </div>
+  <div class="clearfix"></div>
+  <div class="minidash">
+    <span class="title-name">Lastlonger</span>
+     <p><%=current_user.lastlongers.count%></p>
+  </div>
+  <div class="minidash">
+    <span class="title-name">Owe</span>
+  </div>
+  <div class="clearfix"></div>
+
+  <div class="minidash">
+    <span class="title-name">Owed</span>
+  </div>
+  <div class="minidash">
+    <span class="title-name">Tickets</span>
+  </div>
+  <div class="clearfix"></div>
+
+</div>
 <table>
     <tr><td>From </td>
      <td>Tournament </td>
