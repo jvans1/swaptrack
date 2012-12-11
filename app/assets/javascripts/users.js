@@ -2,3 +2,25 @@
 //# All this logic will automatically be available in application.js.
 //# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+
+//only show swaps when clicking on the swap tab
+$(function(){
+  $(".swaps-tab").click(function(){
+    $(".Prop").hide()
+    $(".Lastlonger").hide()
+    $(".Piece").hide()
+  })
+})
+
+//show everything when clicking on the all-active tab
+
+$(function(){
+  $(".all-active").click(function(){
+    $(".Prop").show()
+    $(".Lastlonger").show()
+    $(".Piece").show()
+    $(".Swap").show()
+
+  })
+})
+

@@ -30,24 +30,26 @@
   <div class="clearfix"></div>
 
 </div>
-<table>
-    <tr><td>From </td>
-     <td>Tournament </td>
-     <td>Piece Size </td>
-     <td>Status</td>
-   </tr>
-  <tbody>
-    <%@recuests.each do |recuest|%>
-    <tr>
-      <td><%=recuest.user.name if recuest.user%> </td>
-      <td><%=recuest.tournament.name if recuest.tournament%> </td>
-      <td><%=recuest.amount if recuest.type == 'Swap' || recuest.type == 'Piece' %> </td>
-      <td><%=recuest.status_name%></td>
-    </tr>
-  </tbody>
-    <%end%>
-</table>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="active">
+  <ul>
+    <li class="tabs"><a href="#" class="all-active">All Active</a></li>
+    <li class="tabs"><a href="#" class="pieces-tab">Pieces</a></li>
+    <li class="tabs"><a href="#" class="swaps-tab">Swaps</a></li>
+    <li class="tabs"><a href="#" class="lastlonger-tab">LL</a></li>
+    <li class="tabs"><a href="#" class="props-tab">Props</a></li>
+  </ul>
+  <div>
+      <h4>Type</h4>
+      <h4>With</h4>
+      <%@active_recuests.each do |active|%>
+        <ul class="<%=active.type%>">
+          <li class='active-recuests'><%=active.type%></li>
+          <li class="active-recuests"><%= active.user.name%></li>
+        </ul>
+      <%end%>
+    
+  </div>
+</div>
+
 
 

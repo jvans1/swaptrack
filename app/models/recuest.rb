@@ -1,5 +1,6 @@
 class Recuest < ActiveRecord::Base
-  attr_accessible :receiver, :type, :status
+  ##need to remove :active from mass assignment
+  attr_accessible :receiver, :type, :status, :active, :tournament
   validates_presence_of :user, :receiver, :on => :create
 
   belongs_to :user

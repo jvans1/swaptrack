@@ -10,6 +10,7 @@
   border-style: solid;
   border-color: tan;
   border-radius: 35px;
+  margin-right: 65px;
 
 }
 .minidash{
@@ -28,4 +29,16 @@ span.title-name{
   margin-top: 15px;
   font-size:140%;
   color:black;
+}
+.active-recuests{
+  display: inline;
+}
+.tabs{
+  float:left;
+  margin-right: 15px;
+  display: block;
+}
+.active{
+  margin-left: 25px;
+
 }
