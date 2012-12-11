@@ -4,4 +4,6 @@ class Tournament < ActiveRecord::Base
   has_many :calls
   has_many :users, :through=> :calls
   has_many :prizes
+  has_many :swaps
+  has_many :pieces
 end

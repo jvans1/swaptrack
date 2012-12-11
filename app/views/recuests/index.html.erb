@@ -6,6 +6,7 @@
   <tr>
     <th>Made by   </th>
     <th>For Tournament   </th>
+    <th>type    </th>
     <th>Piece   </th>
     <th>Status   </th>
     <th>Decision   </th>
@@ -16,6 +17,7 @@
   <tr>
     <td><%=recuest.user.name if recuest.user%> </td>
     <td><%=recuest.tournament.name if recuest.tournament%> </td>
+    <td><%=recuest.type%></td>
     <td><%=recuest.percent%> </td>
     <td><%=recuest.status_name%> </td>
     <td><%= render 'actions', :recuest => recuest %></td>

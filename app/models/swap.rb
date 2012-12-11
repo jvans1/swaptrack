@@ -1,3 +1,5 @@
 class Swap < Recuest
-  attr_accessible :percent, :tournament, :amount, :status
+  attr_accessible :percent, :amount
+
+  belongs_to :tournament
 end
