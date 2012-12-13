@@ -1,15 +1,36 @@
-<h1 id="notice"><%=notice%></h1>
-<h1>Log in</h1>
-<%= form_tag sessions_path do %>
-<div class="field">
-  <%=label_tag :email%>
-  <%=text_field_tag :email%>
-</div>
-<div class="field">
-  <%=label_tag :password%>
-  <%=text_field_tag :password%>
-</div>
-<div class="action">
-  <%=submit_tag "Log in" %>
-</div>
-<%end%>
+<body id="body-login">
+
+  <div class="container-fluid">
+
+    <div class="row-fluid">
+      <div class="span4"></div>
+
+      <div class="span4 login-span">
+        <div class="login-wrapper">
+          <div class="login-inner">
+            <h2 class="sign-in">Sign in</h2>
+            <small class="muted">Please sign in using your registered account details</small>
+            <div class="squiggly-border"></div>
+            <h1 id="notice"><%=notice%></h1>
+            <h1>Log in</h1>
+            <%= form_tag sessions_path do %>
+            <div class="field">
+              <%=label_tag :email%>
+              <%=text_field_tag :email%>
+            </div>
+            <div class="field">
+              <%=label_tag :password%>
+              <%=text_field_tag :password%>
+            </div>
+            <div class="action">
+              <%=submit_tag "Log in" %>
+            </div>
+            <%end%>
+          </div>
+        </div>
+      </div>
+
+      <div class="span4"></div>
+    </div>
+
+  </div>

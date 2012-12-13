@@ -35,7 +35,7 @@ div.color-switcher span.green {
 /* Body & Main Elements */
 
 body {
-	background: url('../img/retina_wood.png') repeat;
+	background: 'retina_wood.png' repeat;
 	font-size: 13px;
 }
 

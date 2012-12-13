@@ -84,17 +84,17 @@ class RecuestsController < ApplicationController
       if params[:status] == "Accept" #|| @recuest.update_attributes(params[:recuest])
         @recuest.accepted
         @recuest.save
-        format.html { redirect_to user_recuests_path, notice: 'recuest was accepted.' }
+        format.html { redirect_to user_path, notice: 'Request was accepted.' }
         format.json { head :no_content }
       elsif params[:status] =="Deny"
         @recuest.denied
         @recuest.save
-        format.html { redirect_to user_recuests_path, notice: 'recuest was denied.' }
+        format.html { redirect_to user_path, notice: 'Request was denied.' }
         format.json { head :no_content }
       elsif params[:status] =="Edit"
         @recuest.edit
         @recuest.save
-        format.html { redirect_to edit_user_recuest_path(@recuest), notice: 'Please Edit the recuest and send for approval' }
+        format.html { redirect_to edit_user_path(@recuest), notice: 'Please Edit the request and send for approval' }
         format.json { head :no_content }
       elsif @recuest.updateable? && @recuest.update_attributes(params[:recuest])
         receiver = @recuest.user

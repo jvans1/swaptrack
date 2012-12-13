@@ -3,6 +3,7 @@
 //# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 
+
 //only show swaps when clicking on the swap tab
 $(function(){
   $(".swaps-tab").click(function(){
@@ -23,4 +24,6 @@ $(function(){
 
   })
 })
+
+
 
