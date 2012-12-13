@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121211033645) do
+ActiveRecord::Schema.define(:version => 20121213202709) do
+
+  create_table "managers", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "prizes", :force => true do |t|
     t.integer  "amount"
@@ -25,8 +31,8 @@ ActiveRecord::Schema.define(:version => 20121211033645) do
 
   create_table "recuests", :force => true do |t|
     t.integer  "percent"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "status"
     t.integer  "user_id"
     t.integer  "receiver_id"
@@ -35,6 +41,8 @@ ActiveRecord::Schema.define(:version => 20121211033645) do
     t.string   "description"
     t.datetime "time_frame"
     t.boolean  "active"
+    t.integer  "tournament_id"
+    t.integer  "prize_id"
   end
 
   create_table "tournaments", :force => true do |t|
@@ -46,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20121211033645) do
     t.datetime "updated_at", :null => false
     t.date     "date"
     t.integer  "entries"
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

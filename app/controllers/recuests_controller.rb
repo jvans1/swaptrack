@@ -59,16 +59,18 @@ class RecuestsController < ApplicationController
   # POST /recuests
   # POST /recuests.json
   def create
+    
     @recuest = Recuest.new(params[:recuest].except(:user, :tournament))
     @recuest.user = current_user
+
     @recuest.receiver = User.find_by_name(params[:name])
     @recuest.init
     respond_to do |format|
       if @recuest.save
-        format.html { redirect_to user_recuests_path, notice: 'recuest was successfully created.' }
+        format.html { redirect_to user_path(current_user), notice: 'recuest was successfully created.' }
         format.json { render json: @recuest, status: :created, location: @recuest }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new_swap" }
         format.json { render json: @recuest.errors, status: :unprocessable_entity }
       end
     end

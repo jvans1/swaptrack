@@ -1,4 +1,4 @@
-<%= form_for(@recuest, {url: user_recuests_path}) do |f| %>
+<%= form_for(@recuest, {url: user_recuests_path(current_user)}) do |f| %>
   <% if @recuest.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@recuest.errors.count, "error") %> prohibited this request from being saved:</h2>

@@ -20,9 +20,9 @@ describe User do
         @u1.requests.first.tournament.should eq(@t)
       end
 
-#       it "can receive a request" do
-#         @u2.inbound_requests.include?(@r).should eq(true)
-#       end
+      it "can receive a request" do
+        @u2.inbound_requests.include?(@r).should eq(true)
+      end
 
 #       it "cannot modify a sent request" do 
 #         @u1.approve(@r)
