@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
-  validates_presence_of :password, :on => :create
-  validates_presence_of :email, :on => :create
+  validates_presence_of :password
+  validates_presence_of :email
   attr_accessible :name, :email, :password, :password_confirmation
   has_many :recuests
   has_many :inbound_requests, :class_name=> "Recuest", :foreign_key=> "receiver_id"
@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   def approve(recuest)
     recuest.accepted if authorized_to_update_request?(recuest)
   end
+
   def deny(recuest)
     recuest.denied if authorized_to_update_request?(recuest)
   end
@@ -18,25 +19,14 @@ class User < ActiveRecord::Base
   def total_prizes
      self.prizes.all.select{|p| p.user_id == 1}.map { |p| p.amount }.sum
   end
+
   def send_request(recuest)
     self.recuests << recuest
     recuest.receiver.inbound_requests << recuest
   end
 
-  def swaps
-    total = self.all_recuests.select{ |t| t.type == "Swap" && t.status_name =="accepted"}
-  end
-
-  def pieces
-    recuests.select{ |t| t.type == "Piece" && t.status_name =="accepted"}
-  end
-  
-  def lastlongers
-    total = self.all_recuests.select{ |t| t.type == "Lastlonger" && t.status_name =="accepted"}
-  end
-
-  def pending_recuests
-    recuests.map { |r| r.status == 0 }.count
+  def recuest_collection(type)
+    all_recuests.select{ |t| t.type == type}
   end
 
   def balance_with(person)

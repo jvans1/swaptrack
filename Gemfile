@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
-
+gem "guard-rspec"
 gem 'rails', '3.2.8'
 gem "bcrypt-ruby", "~> 3.0.1"
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
-
+gem 'terminal-notifier-guard'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'debugger'
@@ -23,8 +23,11 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 group :test, :development  do
-  gem "rspec-rails",        :git => "git://github.com/rspec/rspec-rails.git"  
+  gem "rspec-rails", :git => "git://github.com/rspec/rspec-rails.git"  
+  gem "faker", "~> 1.1.2"
+  gem "guard", "~> 1.5.4"
 end
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
