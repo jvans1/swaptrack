@@ -26,6 +26,7 @@ group :test, :development  do
   gem "rspec-rails", :git => "git://github.com/rspec/rspec-rails.git"  
   gem "faker", "~> 1.1.2"
   gem "guard", "~> 1.5.4"
+  gem "mustard"
 end
 
 gem 'jquery-rails'

@@ -5,9 +5,7 @@ FactoryGirl.define do
   status 0
   user { |a| a.association(:user) }
   receiver { |r| r.association(:user )}
-    factory :swap do
-      type "Swap"
-    end
+
   end
 end
 
@@ -15,6 +13,15 @@ end
 FactoryGirl.define do
     factory :piece do
     type "Piece"
+    tournament { |t| t.association(:tournament)}
+  end
+end
+
+FactoryGirl.define do 
+  factory :swap do
+    type "Swap"
+    status 0
+    percent 5
     tournament { |t| t.association(:tournament)}
   end
 end

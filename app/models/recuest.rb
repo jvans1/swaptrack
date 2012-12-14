@@ -2,7 +2,9 @@ class Recuest < ActiveRecord::Base
   ##need to remove :active from mass assignment
   attr_accessible :receiver, :type, :status, :active, :tournament, :percent, :prize 
   # validates_presence_of :user, :receiver, :on => :create
-  belongs_to :prize
+  has_one :receiver_prize_id, :class_name => "Prize"
+  has_one :user_prize, :class_name =>"Prize"
+  
   belongs_to :user
   belongs_to :tournament
   belongs_to :receiver, :class_name=> "User", :foreign_key => "receiver_id"
@@ -14,11 +16,11 @@ class Recuest < ActiveRecord::Base
   end
 
   def accepted 
-    self.status = STATUS_CODES.fetch(:accepted)
+    self.status = STATUS_CODES.fetch(:accepted) if updateable?
   end
 
   def denied
-    self.status = STATUS_CODES.fetch(:denied)
+    self.status = STATUS_CODES.fetch(:denied) if updateable?
   end
   
   def edited

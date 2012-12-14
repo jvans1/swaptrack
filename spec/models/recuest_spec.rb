@@ -1,14 +1,13 @@
 require 'spec_helper'
 
-describe Swap do
+
+describe Recuest do
   before :each do
     @u = FactoryGirl.create(:user)
     @r = FactoryGirl.create(:user)
-    @p1 = FactoryGirl.create(:swap,:user=>@r)
-    @p = FactoryGirl.create(:swap, :user=>@u)
-    @r = FactoryGirl.create(:swap, :user=>@u, :receiver=> @r)
+    @r = FactoryGirl.create(:recuest, :user=>@u, :receiver=> @r)
+  end
 
-  end  
   it "can be in an edited status" do 
     @r.edited
     @r.status.should eq(2)
@@ -23,11 +22,5 @@ describe Swap do
     @r.denied
     @r.status.should eq(-1)
   end
-
-
-  it "returns a hash with with 2 users and a value" do 
-    @r.result.class.must.equal Hash
-  end
-
 
 end
