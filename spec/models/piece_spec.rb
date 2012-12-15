@@ -8,6 +8,7 @@ describe Piece do
     @prize = FactoryGirl.create(:prize)
   end
 
+  
   it "can be in an edited status" do 
     @p.edited
     @p.status.should eq(2)
@@ -35,18 +36,18 @@ describe Piece do
 
     it "is the receiver when the prize = 0" do 
       @prize.amount = 0
-      @p.prize = @prize 
+      @p.user_prize = @prize 
       @p.user_who_owes.should eq @u1
     end
 
     it "is the user when the prize is greater than the buy in" do 
       @prize.amount = 10001
-      @p.prize = @prize
+      @p.user_prize = @prize
       @p.user_who_owes.should eq @u
     end
     it "is the receiver when the prize is less than the buy in" do 
       @prize.amount = 9999
-      @p.prize = @prize
+      @p.user_prize = @prize
       @p.user_who_owes.should eq @u1
     end
 
@@ -55,7 +56,7 @@ describe Piece do
     end
     it "returns the value of the piece" do
       @prize.amount = 100000
-      @p.prize = @prize 
+      @p.user_prize = @prize 
       @p.value.should eq 5000
     end
   end  

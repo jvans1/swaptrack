@@ -1,7 +1,8 @@
 class Piece < Recuest
-  attr_accessible :percent, :amount, :active
+  attr_accessible :percent, :amount, :active, :user_prize
 
   belongs_to :tournament
+  has_one :user_prize, :class_name=> "Prize", :foreign_key => "swap_id"
   def user_who_owes
     if active
       self.receiver
@@ -17,7 +18,7 @@ class Piece < Recuest
   end
 
   def value
-    self.prize.amount * self.percent/100.0
+    self.user_prize.amount * self.percent/100.0
   end
 
 end

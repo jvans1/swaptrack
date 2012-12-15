@@ -5,27 +5,13 @@ class Swap < Recuest
   has_one :receiver_prize, :class_name => "Prize", :foreign_key => "receiver_prize_id"
   has_one :user_prize, :class_name=> "Prize", :foreign_key => "swap_id"
 
-  def person_owed
-    if user_prize.amount > receiver_prize.amount
-      user
-    elsif user_prize.amount < receiver_prize.amount
-      receiver
-    else
-      nil
-    end
+  def result
+    u_prize = (user_prize.amount if user_prize) || 0 
+    r_prize = (receiver_prize.amount if receiver_prize) || 0
+    value = (r_prize - u_prize).abs * percent/100.0 
+    user_who_owes = r_prize > u_prize ? receiver : user
+    user_whose_owed = r_prize > u_prize ? user : receiver 
+    {:user_whose_owed => user_whose_owed, :user_who_owes => user_who_owes, :value => value}
   end
 
-  def value
-    if person_owed == user 
-      percent/100.0 * user_prize.amount  
-    elsif person_owed == receiver
-      percent/100.0 * receiver_prize.amount
-    else
-      user_prize.amount - receiver_prize.amount 
-    end
-  end
-  def result
-    
-    
-  end
 end
