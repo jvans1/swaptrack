@@ -1,7 +1,7 @@
 class Recuest < ActiveRecord::Base
   ##need to remove :active from mass assignment
   attr_accessible :receiver, :type, :status, :active, :tournament, :percent, :prize 
-  # validates_presence_of :user, :receiver, :on => :create
+  validates_presence_of :user, :receiver, :on => :create
   
   belongs_to :user
   belongs_to :tournament
@@ -30,9 +30,9 @@ class Recuest < ActiveRecord::Base
   end
 
   def updateable?   
-    true if receiver.inbound_requests.include?(self)
+    true if receiver && receiver.inbound_requests.include?(self)
   end
 
 end
 
-
+IEC

@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user = current_user
     @recuests = @user.recuests
     @all_recuests = @user.recuests + @user.inbound_requests
-    @active_recuests = @all_recuests.select{|r| r.active}
+    @pending_inbound_recuests = @user.inbound_requests.select{|r| r.status == 0 }
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }

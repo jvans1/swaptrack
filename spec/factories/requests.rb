@@ -12,7 +12,8 @@ end
 
 FactoryGirl.define do
     factory :piece do
-    type "Piece"
+    type "Piece" 
+    percent 5
     tournament { |t| t.association(:tournament)}
   end
 end
@@ -21,7 +22,7 @@ FactoryGirl.define do
   factory :swap do
     type "Swap"
     status 0
-    percent 5
+    percent 5 
     tournament { |t| t.association(:tournament)}
   end
 end

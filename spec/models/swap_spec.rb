@@ -6,8 +6,8 @@ describe Swap do
     @u1 = FactoryGirl.create(:user)
     @p = FactoryGirl.create(:prize)
     @p1 = FactoryGirl.create(:prize)
-    @s1 = FactoryGirl.create(:swap,:user=>@u1)
-    @s2 = FactoryGirl.create(:swap, :user=>@u)
+    @s1 = FactoryGirl.create(:swap,:user=>@u1, :receiver=> @u)
+    @s2 = FactoryGirl.create(:swap, :user=>@u, :receiver=> @u)
     @s = FactoryGirl.create(:swap, :user=>@u, :receiver=> @u1, :receiver_prize=>@p1, :user_prize=>@p)
 
   end  
@@ -26,12 +26,7 @@ describe Swap do
     @s.status.should eq(-1)
   end
 
-
-  it "returns a hash with with 2 users and a value" do 
-    @s.result.class.must.equal Hash
-  end
-
-  it "returns a winner and loser if one person receivs a prize" do
+  it "returns a winner and loser if one person receives a prize" do
     @s.result.count.must.equal 3
   end
   describe "returns" do 
@@ -47,6 +42,10 @@ describe Swap do
     it "computers the value of the swap" do 
       @s.result[:value].should eq 5.0
     end
+    it "is always 0 when active is true" do 
+      @s.active = true 
+      @s.result[:value].should eq 0 
+    end
     it "a value when one number is zero" do
       @p.amount = 0 
       @s.result[:value].should_not be nil
@@ -56,5 +55,16 @@ describe Swap do
       @p1.amount = 0
       @s.result[:value].should eq 0
     end
+    it "0 when both prizes are the same" do 
+      @p.amount = 10000
+      @p1.amount =  10000 
+      @s.result[:value].should eq 0 
+    end
+    it "is the percent times the difference in prize amounts" do 
+      @p.amount = 5000
+      @p1.amount = 15000
+      @s.result[:value].should eq 500
+    end
+
   end
 end

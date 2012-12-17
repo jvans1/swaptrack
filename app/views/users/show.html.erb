@@ -6,16 +6,16 @@
         <div class="hero-unit non-index">
             <div class="minidash">
               <span class="title-name">Swaps</span>
-              <p><%=current_user.swaps.count%></p>
+              <p><%=current_user.recuest_collection(:type=>"Swap", :status=>1).count%></p>
             </div>
             <div class="minidash">
               <span class="title-name">Pieces</span>
-              <p><%=current_user.pieces.count%></p>
+              <p><%=current_user.recuest_collection(:type=>"Piece").count%></p>
             </div>
               <div class="clearfix"></div>
             <div class="minidash">
               <span class="title-name">Lastlonger</span>
-               <p><%=current_user.lastlongers.count%></p>
+               <p><%=current_user.recuest_collection(:type=>"Lastlonger").count%></p>
             </div>
             <div class="minidash">
               <span class="title-name">Owe</span>
@@ -24,14 +24,14 @@
 
             <div class="minidash">
               <span class="title-name">Owed</span>
-              <p><%=current_user.total_owed%>
+                <%=current_user.total_owed%>
             </div>
             <div class="minidash">
               <span class="title-name">Tickets</span>
             </div>
             <div class="minidash">
               <span class="title-name">Awaiting Response</span>
-              <p><%=current_user.pending_recuests%>
+              <p><%=current_user.pending_recuests.count%>
             </div>
           <div class="clearfix"></div>
         </div>
@@ -83,12 +83,12 @@
           </thead>
           <%# create a partial %>
           <tbody>
-            <%@all_recuests.each do |recuest| %>
+            <%@pending_inbound_recuests.each do |recuest| %>
             <tr>
               <td><%=recuest.user.name%></td>
               <td><%=recuest.type%></td>
-              <td><%=recuest.tournament%></td>
-              <td><%=recuest.amount%>%</td>
+              <td><%#=recuest.tournament.name%></td>
+              <td><%=recuest.percent%>%</td>
               <%= form_for recuest, {url: user_recuest_path(current_user, recuest)} do |f|%>
               <td>
               <%= f.submit 'Accept', :value => 'Accept', :name=>"status", :class=>"btn btn-small btn-danger"  %>
@@ -97,6 +97,7 @@
               <%= f.submit "Deny", :value=>"Deny", :name=>"status", :class=>"btn btn-small btn-info"%>
               </td>
               <td>
+
                 <% if recuest.updateable?%> 
                   <%= f.submit "Edit", :value=>"Edit", :name=>"status", :class=>"btn btn-small"%>
                 <%end%>

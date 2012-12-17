@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   validates_presence_of :password
   validates_presence_of :email
   attr_accessible :name, :email, :password, :password_confirmation
+  
   has_many :recuests
   has_many :inbound_requests, :class_name=> "Recuest", :foreign_key=> "receiver_id"
   has_many :prizes
@@ -22,11 +23,12 @@ class User < ActiveRecord::Base
 
   def send_request(recuest)
     self.recuests << recuest
+    recuest.user = self 
     recuest.receiver.inbound_requests << recuest
   end
 
-  def recuest_collection(type)
-    all_recuests.select{ |t| t.type == type}
+  def recuest_collection(options= {} )
+    all_recuests.select{ |t| t.type == options[:type] && t.status == options[:status] if options[:status]}
   end
 
   def balance_with(person)
@@ -39,23 +41,14 @@ class User < ActiveRecord::Base
   end
 
   def total_debt
-    ##go through all the recuests
-    ##find recuests where user owes money and add them up
-      ##Owe money when prize belongs to me and is positive
-      ##Owe money when the prize doesn't belong to me and is negative
-      ##Owe money when I take a piece and there is no prize
-      ##Owe money when I lose a last longer
-    my_prizes = self.all_recuests.select{ |r| r.prize.user == self && r.prize.amount >0 if r.prize}.map{ |p| p.amount }.sum
-    not_my_prizes = self.all_recuests.select{ |r| r.prize.user != self &&r.prize.amount <0 if r.prize}.map{ |p| p.amount }.sum
-    no_prize_pieces = self.inbound_requests.select { |r| r.type == "Piece" }.map { |p| p.amount }.sum 
-    my_prizes + not_my_prizes + no_prize_pieces
+    self.all_recuests.select{ |r| r.result.fetch(:user_who_owes) == self}.map{ |p| p.result.fetch(:value) }.sum
+  end
+  def pending_recuests
+    recuests.select{ |r| r.status == 0 || r.status == nil} 
   end
 
   def total_owed
-    my_prizes = self.all_recuests.select{ |r| r.prize.user == self && r.prize.amount < 0 if r.prize}.map{ |p| p.amount }.sum
-    not_my_prizes = self.all_recuests.select{ |r| r.prize.user != self &&r.prize.amount > 0 if r.prize}.map{ |p| p.amount }.sum
-    no_prize_pieces = self.recuests.select { |r| r.type == "Piece" }.map { |p| p.amount }.sum 
-    my_prizes + not_my_prizes + no_prize_pieces
+    not_my_prizes = self.all_recuests.select{ |r| r.result.fetch(:user_whose_owed) == self}.map{ |p| p.result.fetch(:value) }.sum
   end
 
   private 

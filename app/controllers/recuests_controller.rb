@@ -25,6 +25,7 @@ class RecuestsController < ApplicationController
   # GET /recuests/new
   # GET /recuests/new.json
   def new_swap
+
     @recuest = Recuest.new
     @recuest.type = 'Swap'
     respond_to do |format|
@@ -62,7 +63,6 @@ class RecuestsController < ApplicationController
     
     @recuest = Recuest.new(params[:recuest].except(:user, :tournament))
     @recuest.user = current_user
-
     @recuest.receiver = User.find_by_name(params[:name])
     @recuest.init
     respond_to do |format|

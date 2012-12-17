@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(:version => 20121214205329) do
     t.datetime "created_at",                                                            :null => false
     t.datetime "updated_at",                                                            :null => false
     t.string   "name"
-    t.string   "#<ActiveRecord::ConnectionAdapters::TableDefinition:0x007fba8f5e6680>"
+    t.string   "#<ActiveRecord::ConnectionAdapters::TableDefinition:0x007f9f5eaf10e0>"
     t.string   "password_digest"
     t.string   "email"
     t.integer  "inbound_requests"

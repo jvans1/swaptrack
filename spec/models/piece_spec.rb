@@ -33,6 +33,12 @@ describe Piece do
       @p.active = true
       @p.user_who_owes.should eq @u1
     end
+    it "is always the cost of the piece when active is true" do 
+      @p.active = true
+      @prize.amount = 100000
+      @p.user_prize = @prize 
+      @p.value.should eq @p.cost
+    end
 
     it "is the receiver when the prize = 0" do 
       @prize.amount = 0
@@ -52,12 +58,23 @@ describe Piece do
     end
 
     it "returns the cost" do 
-      @p.debt.should eq 500
+      @p.cost.should eq 500
     end
     it "returns the value of the piece" do
       @prize.amount = 100000
       @p.user_prize = @prize 
       @p.value.should eq 5000
+    end
+  end
+    describe "results" do 
+    it "returns and hash with 3 values" do 
+      @p.result.class.must.equal Hash 
+    end
+
+    it "returns the value if there is a prize" do
+      @prize.amount = 1000
+      @p.user_prize = @prize
+      @p.result.fetch(:value).should eq 50
     end
   end  
 end
