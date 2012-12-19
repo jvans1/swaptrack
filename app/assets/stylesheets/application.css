@@ -11,6 +11,7 @@
  *= require token-input
  *= require token-input-mac
  *= require token-input-facebook
+ *= require tabs
  *= require_self
  *= require_tree .
  
