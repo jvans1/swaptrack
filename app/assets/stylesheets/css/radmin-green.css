@@ -393,6 +393,7 @@ div.container-fluid.main-container {
 
 div.container-fluid.content-wrapper {
 	padding: 20px;
+	margin-top:0px;
 	background: none repeat scroll 0 0 #FFF;
 	-webkit-border-radius: 0 4px 4px 4px;
 	-moz-border-radius: 0 4px 4px 4px;

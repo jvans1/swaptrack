@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121214205329) do
+ActiveRecord::Schema.define(:version => 20121219184412) do
 
   create_table "managers", :force => true do |t|
     t.integer  "user_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20121214205329) do
     t.datetime "time_frame"
     t.boolean  "active"
     t.integer  "tournament_id"
+    t.decimal  "markup"
   end
 
   create_table "tournaments", :force => true do |t|

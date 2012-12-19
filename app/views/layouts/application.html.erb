@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+     <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <title><%= content_for?(:title) ? yield(:title) : "Swaptrack" %></title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag "application", :media => "all" %>
@@ -101,7 +104,7 @@
                 <span class="hidden-tablet hidden-phone">Calendar</span>
               </a>
             </li>
-            <li id="navigation-graphs">
+            <li id="inbox">
               <a href="/users/<%=current_user.id%>/recuests">
                 <span class="box">
                   <i class="radmin-icon radmin-bars"></i>
