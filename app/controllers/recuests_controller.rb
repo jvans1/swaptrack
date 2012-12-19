@@ -42,27 +42,32 @@ class RecuestsController < ApplicationController
   # POST /recuests
   # POST /recuests.json
   def create
-    case params[:type]
-    when "Swap"
-      @recuest = Swap.new 
-    when "Piece"
-      @recuest = Piece.new
-    when "Lastlonger" 
-      @recuest = Lastlonger.new
-    end
-    @recuest.user = current_user
-    @recuest.tournament = Tournament.find(params[:tournaments])
-    @recuest.receiver = User.find(params[:receivers])
-    @recuest.percent = params[:percent].to_i
-    @recuest.init
-    respond_to do |format|
-      if @recuest.save
-        format.html { redirect_to user_path(current_user), notice: 'recuest was successfully created.' }
-        format.json { render json: @recuest, status: :created, location: @recuest }
-      else
-        format.html { render "calender" }
-        format.json { render json: @recuest.errors, status: :unprocessable_entity }
+    receivers = params[:receivers].split
+    @tournaments = params[:tournaments].split
+    receivers.each do |r|
+      @tournaments.each do |t|
+        @recuest = Recuest.create_recuest(params.fetch(:type))
+        @recuest.user = current_user
+        @recuest.receiver = User.find(r)  
+        @recuest.percent = params.fetch(:percent).to_i
+        @recuest.tournament = Tournament.find(t)
+        @recuest.init
+        if @recuest.save
+          next
+        else
+          format.html { render "calender" }
+          format.json { render json: @recuest.errors, status: :unprocessable_entity }
+        end        
       end
+    end    
+    respond_to do |format|
+      if @tournaments.size >1
+        @notice = 'Request was successfully created.'
+      else
+        @notice = "Requests were successfully created."
+      end
+      format.html { redirect_to user_path(current_user), notice: @notice }
+      format.json { render json: @recuest, status: :created, location: @recuest }
     end
   end
 

@@ -36,6 +36,17 @@ class Recuest < ActiveRecord::Base
   def updateable?   
     true if receiver && receiver.inbound_requests.include?(self)
   end
+
+  def self.create_recuest(type)
+    case type
+    when "Swap"
+      Swap.new 
+    when "Piece"
+      Piece.new
+    when "Lastlonger" 
+      Lastlonger.new
+    end
+  end
   
   def receivers=(ids )
     ids.each do |id|
