@@ -3,6 +3,7 @@ class RecuestsController < ApplicationController
   # GET /recuests.json
   before_filter :login_required
   def index
+    @pending_inbound_recuests = current_user.inbound_requests.select{|r| r.status == 0 }
     @inbound_requests = current_user.inbound_requests
     @outbound_requests = current_user.recuests
     respond_to do |format|
@@ -24,27 +25,8 @@ class RecuestsController < ApplicationController
 
   # GET /recuests/new
   # GET /recuests/new.json
-  def new_swap
-
-    @recuest = Recuest.new
-    @recuest.type = 'Swap'
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @recuest }
-    end
-  end
-  def new_piece
-    @recuest = Recuest.new
-    @recuest.type = 'Piece'
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @recuest }
-    end
-  end 
-
-  def new_lastlonger
-    @recuest = Recuest.new
-    @recuest.type = 'Lastlonger'
+  def calendar
+    @recuest = Swap.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @recuest }
@@ -60,17 +42,26 @@ class RecuestsController < ApplicationController
   # POST /recuests
   # POST /recuests.json
   def create
-    
-    @recuest = Recuest.new(params[:recuest].except(:user, :tournament))
+    raise params.inspect
+    case params[:type]
+    when "Swap"
+      @recuest = Swap.new 
+    when "Piece"
+      @recuest = Piece.new
+    when "Lastlonger" 
+      @recuest = Lastlonger.new
+    end
     @recuest.user = current_user
-    @recuest.receiver = User.find_by_name(params[:name])
+    @recuest.tournament = Tournament.find(params[:tournaments])
+    @recuest.receiver = User.find(params[:receivers])
+    @recuest.percent = params[:percent].to_i
     @recuest.init
     respond_to do |format|
       if @recuest.save
         format.html { redirect_to user_path(current_user), notice: 'recuest was successfully created.' }
         format.json { render json: @recuest, status: :created, location: @recuest }
       else
-        format.html { render action: "new_swap" }
+        format.html { render "calender" }
         format.json { render json: @recuest.errors, status: :unprocessable_entity }
       end
     end

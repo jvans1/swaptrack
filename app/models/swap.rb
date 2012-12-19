@@ -32,5 +32,11 @@ class Swap < Recuest
     end
   end
 
+  def tournaments=()
+
+    
+  end
+  def tournaments
+  end
 
 end

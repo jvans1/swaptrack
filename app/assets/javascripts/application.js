@@ -9,6 +9,34 @@
 //
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
+
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require fullcalendar
+//= require fullcalendar.min
+//= require gcal
+//= require bootstrap
+//= require bootstrap.min
+//= require jquery-ui-1.8.23.custom.min
+//= require tournaments
+//= require calendar
+//= require users
+//= require jquery.slideinout-0.1
+//= require recuests
+//= require jquery.tokeninput
+//= require_self
+
+
+$("#swap_receivers").tokenInput("users.json", {
+  crossDomain:false,
+  theme: "facebook"
+});
+
+$("#swap_tournaments").tokenInput("tournaments.json", {
+  crossDomain:false,
+  theme: "facebook"
+});
+
+// $(function(){
+//   $("#tabs").tabs();  
+// })

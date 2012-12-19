@@ -6,7 +6,7 @@ class Piece < Recuest
   def user_who_owes
     if active
       self.receiver
-    elsif value > cost 
+    elsif value > cost
       self.user 
     else
       self.receiver

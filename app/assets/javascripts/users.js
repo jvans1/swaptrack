@@ -26,4 +26,13 @@ $(function(){
 })
 
 
+$(function(){
+  $(".swap").click(function(){
+    $(".dashboard-info").slideOut("horizontal", 250);
+    $(".swap-list").show()
+  })
+})
 
+// $(function(){
+//   $(".")
+// })

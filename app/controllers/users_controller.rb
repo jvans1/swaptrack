@@ -3,10 +3,10 @@ class UsersController < ApplicationController
   # GET /users.json
   before_filter :login_required
   def index
-    @users = User.all
+    @users = User.where("name like ?", "%#{params[:q]}%")
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @users }
+      format.json { render json: @users.as_json(:only => [:name, :id, :email]) }
     end
   end
 
@@ -15,8 +15,9 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @recuests = @user.recuests
-    @all_recuests = @user.recuests + @user.inbound_requests
-    @pending_inbound_recuests = @user.inbound_requests.select{|r| r.status == 0 }
+
+    @all_recuests = @user.all_recuests
+    @swaps = @user.recuest_collection(:type=>"Swap", :status=> 1)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }

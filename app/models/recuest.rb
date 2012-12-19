@@ -7,6 +7,10 @@ class Recuest < ActiveRecord::Base
   belongs_to :tournament
   belongs_to :receiver, :class_name=> "User", :foreign_key => "receiver_id"
   
+
+  has_one :receiver_prize, :class_name => "Prize", :foreign_key => "receiver_prize_id"
+  has_one :user_prize, :class_name=> "Prize", :foreign_key => "swap_id"
+
   STATUS_CODES = {:accepted => 1, :denied => -1, :edited =>2, :pending=>0}
 
   def init
@@ -32,7 +36,16 @@ class Recuest < ActiveRecord::Base
   def updateable?   
     true if receiver && receiver.inbound_requests.include?(self)
   end
+  
+  def receivers=(ids )
+    ids.each do |id|
+      User.find_by_id(id)
+    end
+  end
+  def receivers
+    
+  end
 
 end
 
-IEC
+
