@@ -18,7 +18,6 @@
 //= require bootstrap
 //= require bootstrap.min
 //= require jquery-ui-1.8.23.custom.min
-//= require calendar
 //= require tournaments
 //= require users
 //= require_self
@@ -27,6 +26,6 @@
 //= require jqueryUIv1.9.2
 //= require autocomplete
 //= require recuests
-
+//= require calendar
 
 

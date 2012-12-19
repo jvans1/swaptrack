@@ -8,7 +8,7 @@ $(function(){
           $this.toggleClass("request-title-list")
           $this.toggleClass("super-active", true)
           $this.siblings('h2').toggleClass("request-title-list", true)
-    $("#id_type").attr("value", $this.text() ) 
+    $("#id_type").attr("value", $this.text()) 
   })
 })
 
