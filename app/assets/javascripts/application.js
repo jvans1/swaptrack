@@ -18,25 +18,15 @@
 //= require bootstrap
 //= require bootstrap.min
 //= require jquery-ui-1.8.23.custom.min
-//= require tournaments
 //= require calendar
+//= require tournaments
 //= require users
-//= require jquery.slideinout-0.1
-//= require recuests
-//= require jquery.tokeninput
 //= require_self
+//= require jquery.slideinout-0.1
+//= require jquery.tokeninput
+//= require jqueryUIv1.9.2
+//= require autocomplete
+//= require recuests
 
 
-$("#swap_receivers").tokenInput("users.json", {
-  crossDomain:false,
-  theme: "facebook"
-});
 
-$("#swap_tournaments").tokenInput("tournaments.json", {
-  crossDomain:false,
-  theme: "facebook"
-});
-
-// $(function(){
-//   $("#tabs").tabs();  
-// })

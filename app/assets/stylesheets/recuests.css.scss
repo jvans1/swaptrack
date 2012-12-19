@@ -26,3 +26,68 @@ h2.title{
   display: inline;
   width: 25px;
 }
+
+.super-active{
+  -webkit-background-clip: border-box;
+-webkit-background-origin: padding-box;
+-webkit-background-size: auto;
+-webkit-border-image: none;
+background-attachment: scroll;
+background-clip: border-box;
+background-color: black;
+background-origin: padding-box;
+background-size: auto;
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+border-top-style: solid;
+border-top-width: 0.9090908765792847px;
+color: white;
+display: block;
+float: left;
+font-family: Verdana, Arial, sans-serif;
+font-size: 17.27272605895996px;
+font-weight: normal;
+height: 39.39393615722656px;
+line-height: 20px;
+margin-bottom: -1px;
+margin-left: 0px;
+margin-right: 3.5200002193450928px;
+margin-top: 1px;
+position: relative;
+text-align: left;
+top: 0px;
+white-space: nowrap;
+width: 100px;
+}
+.request-title-list{
+-webkit-background-clip: border-box;
+-webkit-background-origin: padding-box;
+-webkit-background-size: auto;
+-webkit-border-image: none;
+background-attachment: scroll;
+background-clip: border-box;
+background-color: white;
+background-origin: padding-box;
+background-size: auto;
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+border-top-style: solid;
+border-top-width: 0.9090908765792847px;
+color: black;
+display: block;
+float: left;
+font-family: Verdana, Arial, sans-serif;
+font-size: 17.27272605895996px;
+font-weight: normal;
+height: 39.39393615722656px;
+line-height: 20px;
+margin-bottom: -1px;
+margin-left: 0px;
+margin-right: 3.5200002193450928px;
+margin-top: 1px;
+position: relative;
+text-align: left;
+top: 0px;
+white-space: nowrap;
+width: 100px;
+}

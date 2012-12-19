@@ -3902,7 +3902,7 @@ function AgendaEventRenderer() {
 			" class='" + classes.join(' ') + "'" +
 			" style='position:absolute;z-index:8;top:" + seg.top + "px;left:" + seg.left + "px;" + skinCss + "'" +
 			">" +
-			"<div class='fc-event-inner fc-event-skin'"+ skinCssAttr + ">" +
+			"<div class='fc-event-inner fc-event-skin' id"+ skinCssAttr + ">" +
 			"<div class='fc-event-head fc-event-skin'" + skinCssAttr + ">" +
 			"<div class='fc-event-time'>" +
 			htmlEscape(formatDates(event.start, event.end, opt('timeFormat'))) +
@@ -5218,3 +5218,5 @@ function HorizontalPositionCache(getElement) {
 }
 
 })(jQuery);
+
+

@@ -42,7 +42,6 @@ class RecuestsController < ApplicationController
   # POST /recuests
   # POST /recuests.json
   def create
-    raise params.inspect
     case params[:type]
     when "Swap"
       @recuest = Swap.new 

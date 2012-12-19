@@ -13,12 +13,15 @@
   <label>Send To</label>
   
   <%=f.label :receivers, :class=> "recuest-field"%>
-  <%=f.text_field :receivers, :class=> "recuest-field", :id=>"swap_receivers", :name=>"receivers"%>
+  <%=f.text_field :receivers, :class=> "recuest-field swap_receivers", :name=>"receivers"%>
   <%=f.label :tournaments, :class=> "recuest-field"%>
-  <%=f.text_field :tournaments, :class=> "recuest-field", :id=>"swap_tournaments", :name=>"tournaments" %>
+  <%=f.text_field :tournaments, :class=> "recuest-field swap_tournaments", :name=>"tournaments" %>
   <%=f.label :percent, :class=> "recuest-field"%>
+  <div class="clearfix"></div>
+
   <%=f.text_field :percent, :class=> "recuest-field", :name=>"percent"%>
-  <%=f.hidden_field :type, :value=>"Swap", :name=>"type"%>
+  <input type="hidden" id="id_type">
+  <div class="clearfix"></div>
   <%=f.submit :send_request, :class=> "recuest-field"%>
 
 <%end%>

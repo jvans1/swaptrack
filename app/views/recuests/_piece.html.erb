@@ -11,12 +11,17 @@
     </div>
   <% end %>
   <label>Send To</label>
-  <input type="text" name="name">
-  <%=f.label :tournament%>
-  <%=f.text_field :tournament %>
-  <%=f.label :percent%>
-  <%=f.text_field :percent%>
-  <%=f.hidden_field :type, :value=>"Piece"%>
-  <%=f.submit :send_request%>
+  
+  <%=f.label :receivers, :class=> "recuest-field"%>
+  <%=f.text_field :receivers, :class=> "recuest-field swap_receivers", :name=>"receivers"%>
+  <%=f.label :tournaments, :class=> "recuest-field"%>
+  <%=f.text_field :tournaments, :class=> "recuest-field swap_tournaments", :name=>"tournaments" %>
+  <div class="clearfix"></div>
+  <%=f.label :percent, :class=> "recuest-field"%>
+  <%=f.text_field :percent, :class=> "recuest-field", :name=>"percent"%>
+  <div class="clearfix"></div>
+  <%=f.hidden_field :type, :value=>"Swap", :name=>"type"%>
+  <div class="clearfix"></div>
+  <%=f.submit :send_request, :class=> "recuest-field"%>
 
 <%end%>
