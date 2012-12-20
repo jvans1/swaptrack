@@ -4,7 +4,7 @@ describe Piece do
   before(:each) do
     @u = FactoryGirl.create(:user)
     @u1 = FactoryGirl.create(:user)
-    @p = FactoryGirl.create(:piece, :percent => 5, :user=>@u, :receiver=>@u1)
+    @p = FactoryGirl.create(:piece, :percent => 5, :user=>@u, :receiver=>@u1,:markup=>1.25, :user_prize=>Prize.new(:amount=>0))
     @prize = FactoryGirl.create(:prize)
   end
 
@@ -47,8 +47,9 @@ describe Piece do
     end
 
     it "is the user when the prize is greater than the buy in" do 
-      @prize.amount = 10001
+      @prize.amount = 12501
       @p.user_prize = @prize
+      @p.active = false
       @p.user_who_owes.should eq @u
     end
     it "is the receiver when the prize is less than the buy in" do 
@@ -58,7 +59,7 @@ describe Piece do
     end
 
     it "returns the cost" do 
-      @p.cost.should eq 500
+      @p.cost.should eq 625
     end
     it "returns the value of the piece" do
       @prize.amount = 100000

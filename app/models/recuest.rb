@@ -1,8 +1,8 @@
 class Recuest < ActiveRecord::Base
-  ##need to remove :active from mass assignment
-  attr_accessible :receiver, :type, :status, :active, :tournament, :percent, :prize 
-  validates_presence_of :user, :receiver, :on => :create
-  
+  ##need to remove :active, :user_prize user from mass assignment
+  attr_accessible :receiver, :type, :status, :active, :tournament, :percent, :prize, :user, :receiver, :user_prize
+  validates_presence_of :user, :receiver
+  validates_presence_of :user_prize  
   belongs_to :user
   belongs_to :tournament
   belongs_to :receiver, :class_name=> "User", :foreign_key => "receiver_id"

@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   has_many :inbound_requests, :class_name=> "Recuest", :foreign_key=> "receiver_id"
   has_many :prizes
   has_many :tournaments, :through => "recuests"
-  #belongs_to :manager
+
+
 
   def approve(recuest)
     recuest.accepted if authorized_to_update_request?(recuest)
@@ -24,13 +25,13 @@ class User < ActiveRecord::Base
     recuest.receiver.inbound_requests << recuest
   end
 
-##Prizes##
+
   def total_prizes
      self.prizes.all.select{|p| p.user_id == 1}.map { |p| p.amount }.sum
   end
-####
 
-##Manager
+
+
   def recuest_collection(options= {} )
     all_recuests.select{ |t| t.type == options[:type] && t.status == options[:status] if options[:status]}
   end
@@ -46,7 +47,7 @@ class User < ActiveRecord::Base
 
 
   def total_owed
-    not_my_prizes = self.all_recuests.select{ |r| r.result.fetch(:user_whose_owed) == self}.map{ |p| p.result.fetch(:value) }.sum
+    self.all_recuests.select{ |r| r.result.fetch(:user_whose_owed) == self}.map{ |p| p.result.fetch(:value) }.sum
   end
 
 

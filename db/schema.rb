@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121219184412) do
+ActiveRecord::Schema.define(:version => 20121219234933) do
 
   create_table "managers", :force => true do |t|
     t.integer  "user_id"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20121219184412) do
     t.integer  "user_id"
     t.integer  "swap_id"
     t.integer  "receiver_prize_id"
+    t.integer  "package_id"
   end
 
   create_table "recuests", :force => true do |t|
@@ -47,6 +48,11 @@ ActiveRecord::Schema.define(:version => 20121219184412) do
     t.decimal  "markup"
   end
 
+  create_table "tournament_packages", :force => true do |t|
+    t.integer "tournament_id"
+    t.integer "package_id"
+  end
+
   create_table "tournaments", :force => true do |t|
     t.string   "name"
     t.integer  "buy_in"
@@ -63,7 +69,7 @@ ActiveRecord::Schema.define(:version => 20121219184412) do
     t.datetime "created_at",                                                            :null => false
     t.datetime "updated_at",                                                            :null => false
     t.string   "name"
-    t.string   "#<ActiveRecord::ConnectionAdapters::TableDefinition:0x007ff2e9f2d5a8>"
+    t.string   "#<ActiveRecord::ConnectionAdapters::TableDefinition:0x007fc01672ee20>"
     t.string   "password_digest"
     t.string   "email"
     t.integer  "inbound_requests"

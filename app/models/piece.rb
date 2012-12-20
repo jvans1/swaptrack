@@ -1,5 +1,6 @@
 class Piece < Recuest
   attr_accessible :percent, :active, :user_prize, :markup
+  validates_presence_of :percent, :markup
 
   belongs_to :tournament
   has_one :user_prize, :class_name=> "Prize", :foreign_key => "swap_id"
@@ -14,7 +15,7 @@ class Piece < Recuest
   end
 
   def cost
-    self.percent/100.0 * self.tournament.buy_in * markup
+    percent/100.0 * tournament.buy_in * markup
   end
 
   def value

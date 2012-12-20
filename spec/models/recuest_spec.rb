@@ -5,7 +5,7 @@ describe Recuest do
   before :each do
     @u = FactoryGirl.create(:user)
     @u1 = FactoryGirl.create(:user)
-    @r = FactoryGirl.create(:recuest, :user=>@u, :receiver=> @u1)
+    @r = FactoryGirl.create(:recuest, :user=>@u, :receiver=> @u1,:user_prize=>Prize.new(:amount=>0),:receiver_prize=>Prize.new(:amount=>0))
   end
 
   it "can be in an edited status" do 

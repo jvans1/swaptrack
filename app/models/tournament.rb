@@ -6,4 +6,7 @@ class Tournament < ActiveRecord::Base
   has_many :prizes
   has_many :swaps
   has_many :pieces
+  has_many :tournament_packages
+  has_many :packages, :through => :tournament_packages
+
 end

@@ -51,6 +51,8 @@ class RecuestsController < ApplicationController
         @recuest.receiver = User.find(r)  
         @recuest.percent = params.fetch(:percent).to_i
         @recuest.tournament = Tournament.find(t)
+        @recuest.user_prize = Prize.create 
+        @recuest.receiver_prize = Prize.create 
         @recuest.init
         if @recuest.save
           next
