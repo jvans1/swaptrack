@@ -13,5 +13,8 @@
 // })
 
 $(function(){
-  $("#tabs").tabs();
+
+  $("#myTab").tab()
+
 })
+

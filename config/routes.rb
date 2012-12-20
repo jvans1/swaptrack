@@ -2,7 +2,7 @@ Swaptrack::Application.routes.draw do
   
 
 
-    
+  get "/inbox" => "recuests#index"
   get "/calendar" => "recuests#calendar", :as=> "calendar"
   get "/login" => "sessions#new"
   get "/signup" =>"users#new"

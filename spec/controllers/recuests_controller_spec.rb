@@ -23,47 +23,58 @@ describe RecuestsController do
   # This should return the minimal set of attributes required to create a valid
   # Request. As you add validations to Request, be sure to
   # update the return value of this method accordingly.
-  def valid_attributes
-    {:user=>FactoryGirl.create(:user), :receiver=> FactoryGirl.create(:user), :user_prize=>Prize.new(:amount=>0)  }
+  def valid_attributes_piece
+    {:user=>FactoryGirl.create(:user), :receiver=> FactoryGirl.create(:user), :user_prize=>Prize.new(:amount=>0)}
   end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # RequestsController. Be sure to keep this updated too.
-  def valid_session
-    {:session_id => 1}
+  # def valid_session
+  #   {:session_id => 1}
+  # end
+  before :each do 
+    @user = FactoryGirl.create(:user,:email=>"Jv",:password=>"pass")
+    @user1 = FactoryGirl.create(:user,:email=>"VEjay",:password=>"pass")
+    @s = FactoryGirl.create(:swap, :user=>@user, :receiver=> @user1, :receiver_prize=>@p1, :user_prize=>@p) 
+    @s1 = FactoryGirl.create(:swap, :user=>@user, :receiver=> @user1, :receiver_prize=>@p1, :user_prize=>@p) 
   end
 
   describe "GET index" do
-    it "assigns all requests as @recuests" do
-      recuest = Piece.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:requests).should eq([request])
+    it "returns an array of pending inbound requests" do
+      @s.status = 0 
+      @s1.status = 1
+      current_user = @user 
+      @user.inbound_recuests << @s
+      @user.inbound_recuest << @s1
+      debugger
+      get :index
+      current_user.pending_inbound_recuests.should eq([@s])
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested request as @request" do
-      request = Recuest.create! valid_attributes
-      get :show, {:id => request.to_param}, valid_session
-      assigns(:request).should eq(request)
-    end
-  end
+  # describe "GET show" do
+  #   it "assigns the requested request as @request" do
+  #     request = Recuest.create! valid_attributes
+  #     get :show, {:id => request.to_param}, valid_session
+  #     assigns(:request).should eq(request)
+  #   end
+  # end
 
-  describe "GET new" do
-    it "assigns a new request as @request" do
-      get :new, {}, valid_session
-      assigns(:request).should be_a_new(Recuest)
-    end
-  end
+  # describe "GET new" do
+  #   it "assigns a new request as @request" do
+  #     get :new, {}, valid_session
+  #     assigns(:request).should be_a_new(Recuest)
+  #   end
+  # end
 
-  describe "GET edit" do
-    it "assigns the requested request as @request" do
-      request = Recuest.create! valid_attributes
-      get :edit, {:id => request.to_param}, valid_session
-      assigns(:request).should eq(request)
-    end
-  end
+  # describe "GET edit" do
+  #   it "assigns the requested request as @request" do
+  #     request = Recuest.create! valid_attributes
+  #     get :edit, {:id => request.to_param}, valid_session
+  #     assigns(:request).should eq(request)
+  #   end
+  # end
 
   # describe "POST create" do
   #   describe "with valid params" do

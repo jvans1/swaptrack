@@ -4,24 +4,26 @@
       <div class="container-fluid content-wrapper" id="inner-cal">
         <div class="row-fluid">
           <div class="span10">
-            <div class="hero-unit" id="tabs">
-              <ul> 
-                <li><a href="#1"><span>Swap</span></a></li>
-                <li><a href="#2"><span>Piece</span></a></li>
-                <li><a href="#3"><span>Lastlonger</span></a></li>
-                <li><a href="#4"><span>Ticket</span></a></li>
+            <div>
+              <ul class="nav nav-tabs" id="myTab"> 
+                <li class="active"><a href="#swap-tab" data-toggle="tab">Swap</a></li>
+                <li><a href="#piece-tab" data-toggle="tab">Piece</a></li>
+                <li><a href="#last-longer-tab" data-toggle="tab">Lastlonger</a></li>
+                <li><a href="#package-tab" data-toggle="tab">Package</a></li>
               </ul>
-              <div id="1">
-              <%= render "swap"%>
-              </div>
-              <div id="2">
-                <%= render "piece"%>
-              </div>
-              <div id="3">
-                <%#= render "lastlonger"%>
-              </div>
-              <div id="4">
-                <%#= render "lastlonger"%>
+              <div class="tab-content">
+                <div class="tab-pane active"id="swap-tab">
+                <%= render "swap"%>
+                </div>
+                <div class="tab-pane" id="piece-tab">
+                  <%= render "piece"%>
+                </div>
+                <div class="tab-pane" id="last-longer-tab">
+                  <h2>Coming Soon</h2>
+                </div>
+                <div class="tab-pane" id="package-tab">
+                  <h2>Coming Soon</h2>
+                </div>
               </div>
             </div>
           </div>

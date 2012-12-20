@@ -4,7 +4,7 @@
     <div class="span12">
       <div class="hero-unit non-index">
         <div class="dashboard-info">
-          <div class="minidash swap">  
+            <div class="minidash">  
             <span class="title-name">Swaps</span>
               <p><%=current_user.recuest_collection(:type=>"Swap", :status=>1).count%></p>
             </div>
@@ -12,7 +12,7 @@
               <span class="title-name">Pieces</span>
               <p><%=current_user.recuest_collection(:type=>"Piece").count%></p>
             </div>
-              <div class="clearfix"></div>
+              
             <div class="minidash">
               <span class="title-name">Lastlonger</span>
                <p><%=current_user.recuest_collection(:type=>"Lastlonger").count%></p>
@@ -33,18 +33,7 @@
               <span class="title-name">Awaiting Response</span>
               <p><%=current_user.pending_recuests.count%></p>
             </div>
-        <div class="clearfix"></div>
-        <div class="swap-list">
-          <ul>
-            <%@swaps.each do |s|%>
-            <li><%= current_user == s.user.name ? s.receiver.name : s.user.name %></li>
-            <li><%=s.percent%></li>
-
-            <%end%>
-            <h1>This list</h1>
-          </ul>
-        </div>
-        </div>
+          </div>
       </div>
     </div>
   </div>
@@ -74,6 +63,9 @@
   </div>
 
 </div>
+
+<%= content_for :js do %>
+<% end %>
 
 
 

@@ -1,6 +1,6 @@
 class Swap < Recuest
   attr_accessible :percent, :amount, :tournament,:user_prize, :receiver_prize, :user
-  validates_presence_of :percent, :tournament, :user_prize, :receiver_prize
+  validates_presence_of :percent, :tournament, :user_prize, :receiver_prize, :on =>:create
   belongs_to :tournament
   belongs_to :user
 
