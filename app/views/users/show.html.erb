@@ -4,36 +4,61 @@
     <div class="span12">
       <div class="hero-unit non-index">
         <div class="dashboard-info">
-            <div class="minidash">  
+            <div class="minidash dash-swaps">  
             <span class="title-name">Swaps</span>
               <p><%=current_user.recuest_collection(:type=>"Swap", :status=>1).count%></p>
             </div>
-            <div class="minidash">
+            <div class="minidash dash-pieces">
               <span class="title-name">Pieces</span>
               <p><%=current_user.recuest_collection(:type=>"Piece").count%></p>
             </div>
               
-            <div class="minidash">
+            <div class="minidash dash-lastlonger">
               <span class="title-name">Lastlonger</span>
                <p><%=current_user.recuest_collection(:type=>"Lastlonger").count%></p>
             </div>
-            <div class="minidash">
+            <div class="minidash dash-owe">
               <span class="title-name">Owe</span>
               <p><%=current_user.total_debt%></p>
             </div>
 
-            <div class="minidash">
+            <div class="minidash dash-owed">
               <span class="title-name">Owed</span>
                 <%=current_user.total_owed%>
             </div>
-            <div class="minidash">
-              <span class="title-name">Tickets</span>
+            <div class="minidash dash-packages">
+              <span class="title-name">Packages</span>
             </div>
-            <div class="minidash">
+            <div class="minidash dash-awaiting-response">
               <span class="title-name">Awaiting Response</span>
               <p><%=current_user.pending_recuests.count%></p>
             </div>
-          </div>
+        </div>
+        <div class="dash-details dash-swaps">
+          <h3 class="dash-titles">Swaps</h3>
+        </div>
+        <div class="dash-details dash-pieces">
+          <h3 class="dash-titles">Pieces</h3>
+        </div>
+        <div class="dash-details dash-lastlonger">
+          <h3 class="dash-titles">Lastlongers</h3>
+        </div>
+        <div class="dash-details dash-owe">
+          <h3 class="dash-titles">Owe</h3>
+        </div>
+        <div class="dash-details dash-owed">
+          <h3 class="dash-titles">Owed</h3>
+        </div>
+        <div class="dash-details dash-packages">
+           <h3 class="dash-titles">Packages</h3>
+        </div>
+
+        <div class="dash-details dash-awaiting-response">
+          <h3>Pending Requests</h3>
+          <ul>
+            <li>Reqeuest1</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

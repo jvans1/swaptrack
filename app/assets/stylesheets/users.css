@@ -18,6 +18,28 @@
   margin-right: 65px;
 
 }
+div.dash-details.dash-swaps{
+  display: none;
+
+}
+div.dash-details.dash-pieces{
+  display: none;
+}
+div.dash-details.dash-lastlonger{
+  display: none;
+}
+div.dash-details.dash-awaiting-response{
+  display: none;
+}
+div.dash-details.dash-owe{
+  display: none;
+}
+div.dash-details.dash-owed{
+  display: none;
+}
+div.dash-details.dash-packages{
+  display: none;
+}
 
 .dashboard-info{
   margin-top: 30px;

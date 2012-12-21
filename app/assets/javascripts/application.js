@@ -26,6 +26,6 @@
 //= require autocomplete
 //= require recuests
 //= require calendar
-//= require_self
+//= require dashboard
 
 
