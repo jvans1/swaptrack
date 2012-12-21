@@ -23,6 +23,8 @@ FactoryGirl.define do
     type "Swap"
     status 0
     percent 5 
+    user_prize {|t| t.association(:prize)}
+    receiver_prize {|t| t.association(:prize)}
     tournament { |t| t.association(:tournament)}
   end
 end

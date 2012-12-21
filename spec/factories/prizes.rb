@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :prize do
+    amount 0
   end
 end

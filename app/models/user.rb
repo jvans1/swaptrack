@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   has_many :recuests
   has_many :inbound_requests, :class_name=> "Recuest", :foreign_key=> "receiver_id"
   has_many :prizes
-  has_many :tournaments, :through => "recuests"
+  has_many :user_tournaments
+  has_many :tournaments, :through => :user_tournaments
 
 
 

@@ -147,7 +147,9 @@
   }
   .container-fluid {
     padding: 0;
+    margin-top:-35px;
   }
+
   .dl-horizontal dt {
     float: none;
     width: auto;
@@ -726,6 +728,7 @@
     color: #999999;
     text-shadow: none;
   }
+
   .nav-collapse .nav > li > a,
   .nav-collapse .dropdown-menu a {
     padding: 6px 15px;

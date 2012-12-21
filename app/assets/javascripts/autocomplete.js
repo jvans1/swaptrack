@@ -1,10 +1,10 @@
 $(function(){
-  $("#swap_receivers").tokenInput("users.json", {
+  $(".swap_receivers").tokenInput("users.json", {
     crossDomain:false,
     theme: "facebook"
   });
 
-  $("#swap_tournaments").tokenInput("tournaments.json", {
+  $(".swap_tournaments").tokenInput("tournaments.json", {
     crossDomain:false,
     theme: "facebook"
   });

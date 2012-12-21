@@ -24,20 +24,19 @@ describe RecuestsController do
   # Request. As you add validations to Request, be sure to
   # update the return value of this method accordingly.
   def valid_attributes_piece
-    {:user=>FactoryGirl.create(:user), :receiver=> FactoryGirl.create(:user), :user_prize=>Prize.new(:amount=>0)}
+    {:user_id=>User.first.id, :receivers=> User.last.id.to_s, :markup=> 1, :tournaments=> Tournament.first.id.to_s, :type=>"Piece", :percent => 0 }
   end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # RequestsController. Be sure to keep this updated too.
-  # def valid_session
-  #   {:session_id => 1}
-  # end
+
   before :each do 
-    @user = FactoryGirl.create(:user,:email=>"Jv",:password=>"pass")
-    @user1 = FactoryGirl.create(:user,:email=>"VEjay",:password=>"pass")
-    @s = FactoryGirl.create(:swap, :user=>@user, :receiver=> @user1, :receiver_prize=>@p1, :user_prize=>@p) 
-    @s1 = FactoryGirl.create(:swap, :user=>@user, :receiver=> @user1, :receiver_prize=>@p1, :user_prize=>@p) 
+    @user = create(:user,:email=>"Jv",:password=>"pass")
+    @user1 = create(:user,:email=>"VEjay",:password=>"pass")
+    @s = create(:swap, :user=>@user, :receiver=> @user1, :receiver_prize=> create(:prize), :user_prize => create(:prize))
+    @s1 = create(:swap, :user=>@user, :receiver=> @user1, :receiver_prize=>create(:prize), :user_prize=>create(:prize)) 
+    session[:user_id] = @user.id 
   end
 
   describe "GET index" do
@@ -45,26 +44,26 @@ describe RecuestsController do
       @s.status = 0 
       @s1.status = 1
       current_user = @user 
-      @user.inbound_recuests << @s
-      @user.inbound_recuest << @s1
-      debugger
+      @user.inbound_requests << @s
+      @user.inbound_requests << @s1
+      pending_inbound_recuests = current_user.inbound_requests.select{|r| r.status == 0 }
       get :index
-      current_user.pending_inbound_recuests.should eq([@s])
+      pending_inbound_recuests.should eq([@s])
     end
   end
 
   # describe "GET show" do
   #   it "assigns the requested request as @request" do
-  #     request = Recuest.create! valid_attributes
-  #     get :show, {:id => request.to_param}, valid_session
+  #     request = create(:swap, :user=>@user, :receiver=>@user1 )
+  #     get :show, {:id => request.to_param}
   #     assigns(:request).should eq(request)
   #   end
   # end
 
   # describe "GET new" do
   #   it "assigns a new request as @request" do
-  #     get :new, {}, valid_session
-  #     assigns(:request).should be_a_new(Recuest)
+  #     get :calendar
+  #     assigns(:recuest).should be_a_new(Recuest)
   #   end
   # end
 
@@ -76,42 +75,42 @@ describe RecuestsController do
   #   end
   # end
 
-  # describe "POST create" do
-  #   describe "with valid params" do
-  #     it "creates a new Request" do
-  #       expect {
-  #         post :create, {:request => valid_attributes}, valid_session
-  #       }.to change(Recuest, :count).by(1)
-  #     end
+  describe "POST create" do
+    describe "with valid params" do
+      it "creates a single new piece Request" do
+        expect {
+          post :create, valid_attributes_piece
+        }.to change(Recuest, :count).by(1)
+      end
 
-  #     it "assigns a newly created request as @request" do
-  #       post :create, {:request => valid_attributes}, valid_session
-  #       assigns(:request).should be_a(Recuest)
-  #       assigns(:request).should be_persisted
-  #     end
+      # it "assigns a newly created request as @request" do
+      #   post :create, {:request => valid_attributes}, valid_session
+      #   assigns(:request).should be_a(Recuest)
+      #   assigns(:request).should be_persisted
+      # end
 
-  #     it "redirects to the created request" do
-  #       post :create, {:request => valid_attributes}, valid_session
-  #       response.should redirect_to(Recuest.last)
-  #     end
-  #   end
+      # it "redirects to the created request" do
+      #   post :create, {:request => valid_attributes}, valid_session
+      #   response.should redirect_to(Recuest.last)
+      # end
+    end
 
-  #   describe "with invalid params" do
-  #     it "assigns a newly created but unsaved request as @request" do
-  #       # Trigger the behavior that occurs when invalid params are submitted
-  #       Recuest.any_instance.stub(:save).and_return(false)
-  #       post :create, {:request => {  }}, valid_session
-  #       assigns(:request).should be_a_new(Recuest)
-  #     end
+    # describe "with invalid params" do
+    #   it "assigns a newly created but unsaved request as @request" do
+    #     # Trigger the behavior that occurs when invalid params are submitted
+    #     Recuest.any_instance.stub(:save).and_return(false)
+    #     post :create, {:request => {  }}, valid_session
+    #     assigns(:request).should be_a_new(Recuest)
+    #   end
 
-  #     it "re-renders the 'new' template" do
-  #       # Trigger the behavior that occurs when invalid params are submitted
-  #       Recuest.any_instance.stub(:save).and_return(false)
-  #       post :create, {:request => {  }}, valid_session
-  #       response.should render_template("new")
-  #     end
-  #   end
-  # end
+    #   it "re-renders the 'new' template" do
+    #     # Trigger the behavior that occurs when invalid params are submitted
+    #     Recuest.any_instance.stub(:save).and_return(false)
+    #     post :create, {:request => {  }}, valid_session
+    #     response.should render_template("new")
+    #   end
+    # end
+  end
 
   # describe "PUT update" do
   #   describe "with valid params" do

@@ -26,7 +26,7 @@ class RecuestsController < ApplicationController
   # GET /recuests/new
   # GET /recuests/new.json
   def calendar
-    @recuest = Swap.new
+    @recuest = Recuest.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @recuest }
@@ -42,6 +42,7 @@ class RecuestsController < ApplicationController
   # POST /recuests
   # POST /recuests.json
   def create
+    binding.pry
     receivers = params[:receivers].split
     @tournaments = params[:tournaments].split
     receivers.each do |r|
@@ -51,8 +52,9 @@ class RecuestsController < ApplicationController
         @recuest.receiver = User.find(r)  
         @recuest.percent = params.fetch(:percent).to_i
         @recuest.tournament = Tournament.find(t)
-        @recuest.user_prize = Prize.create 
-        @recuest.receiver_prize = Prize.create 
+        @recuest.user_prize = Prize.create(:amount=>0)
+        @recuest.receiver_prize = Prize.create(:amount=>0)
+        @recuest.markup = params[:markup]
         @recuest.init
         if @recuest.save
           next

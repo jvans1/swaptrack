@@ -186,6 +186,7 @@ DEPENDENCIES
   jquery-ui-rails
   less-rails
   mustard
+  pry
   rails (= 3.2.8)
   rspec-rails!
   sass-rails (~> 3.2.3)

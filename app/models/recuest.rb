@@ -56,7 +56,13 @@ class Recuest < ActiveRecord::Base
   def receivers
     
   end
+  
+  def tournaments=()
 
+    
+  end
+  def tournaments
+  end
 end
 
 

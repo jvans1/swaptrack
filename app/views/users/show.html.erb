@@ -64,8 +64,16 @@
 
 </div>
 
-<%= content_for :js do %>
-<% end %>
+<% content_for :js do%>
+  <script>
+  if ($("#myTab")){
+    $(".nav.nav-stacked.left-menu li").removeClass("active")
+    $("#navigation-index").addClass("active")
+  }
+
+  </script>
+<%end%>
+
 
 
 

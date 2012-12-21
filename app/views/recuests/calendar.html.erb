@@ -1,6 +1,6 @@
-<div class="container-fluid main-container cal-shorten">
+<p id="notice"><%=notice%></p>
+<div class="container-fluid cal-shorten">
   <div class="row-fluid">
-    <div class="span10">
       <div class="container-fluid content-wrapper" id="inner-cal">
         <div class="row-fluid">
           <div class="span10">
@@ -16,7 +16,7 @@
                 <%= render "swap"%>
                 </div>
                 <div class="tab-pane" id="piece-tab">
-                  <%= render "piece"%>
+                  <%#= render "piece"%>
                 </div>
                 <div class="tab-pane" id="last-longer-tab">
                   <h2>Coming Soon</h2>
@@ -52,6 +52,15 @@
   </div>
 </div>
 
+<% content_for :js do%>
+  <script>
+  if ($("#myTab")){
+    $(".nav.nav-stacked.left-menu li").removeClass("active")
+    $("#navigation-calendar").addClass("active")
+  }
+
+  </script>
+<%end%>
 <style type='text/css'>
 
 body {

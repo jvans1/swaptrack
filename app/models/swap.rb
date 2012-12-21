@@ -31,12 +31,4 @@ class Swap < Recuest
     {:user_whose_owed => @user_whose_owed, :user_who_owes => @user_who_owes, :value => 0}
     end
   end
-
-  def tournaments=()
-
-    
-  end
-  def tournaments
-  end
-
 end

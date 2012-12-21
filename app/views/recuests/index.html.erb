@@ -78,3 +78,13 @@
     </div>
   </div>
 </div>
+
+<% content_for :js do%>
+  <script>
+  if ($("#myTab")){
+    $(".nav.nav-stacked.left-menu li").removeClass("active")
+    $("#inbox").addClass("active")
+  }
+
+  </script>
+<%end%>

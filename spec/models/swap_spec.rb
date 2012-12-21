@@ -2,13 +2,13 @@ require 'spec_helper'
 
 describe Swap do
   before :each do
-    @u = FactoryGirl.create(:user)
-    @u1 = FactoryGirl.create(:user)
-    @p = FactoryGirl.create(:prize)
-    @p1 = FactoryGirl.create(:prize)
-    @s1 = FactoryGirl.create(:swap,:user=>@u1, :receiver=> @u)
-    @s2 = FactoryGirl.create(:swap, :user=>@u, :receiver=> @u)
-    @s = FactoryGirl.create(:swap, :user=>@u, :receiver=> @u1, :receiver_prize=>@p1, :user_prize=>@p)
+    @u = create(:user)
+    @u1 = create(:user)
+    @p = create(:prize)
+    @p1 = create(:prize)
+    @s1 = create(:swap,:user=>@u1, :receiver=> @u, :receiver_prize=> create(:prize), :user_prize=> create(:prize))
+    @s2 = create(:swap, :user=>@u, :receiver=> @u, :receiver_prize=>  create(:prize), :user_prize=> create(:prize))
+    @s = create(:swap, :user=>@u, :receiver=> @u1, :receiver_prize=>@p1, :user_prize=>@p)
 
   end  
   it "can be in an edited status" do 

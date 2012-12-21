@@ -10,17 +10,19 @@
       </ul>
     </div>
   <% end %>
-  <div class="clearfix"></div>
-  
-  <%=f.label :receivers, :class=> "recuest-field"%>
-  <%=f.text_field :receivers, :class=> "recuest-field swap_receivers", :name=>"receivers"%>
-  <%=f.label :tournaments, :class=> "recuest-field"%>
-  <%=f.text_field :tournaments, :class=> "recuest-field swap_tournaments", :name=>"tournaments" %>
-  <%=f.label :percent, :class=> "recuest-field"%>
-  <div class="clearfix"></div>
-
-  <%=f.text_field :percent, :class=> "recuest-field", :name=>"percent"%>
+  <div class="form-fields">
+    <%=f.label :receivers%>
+    <%=f.text_field :receivers, :class=> "swap_receivers", :name=>"receivers"%>
+  </div>
+  <div>
+    <%=f.label :tournaments%>
+    <%=f.text_field :tournaments, :class=> "swap_tournaments", :name=>"tournaments"%>
+  </div>
+  <div class="form-fields">
+    <%=f.label :percent%>
+    <%=f.text_field :percent, :name=>"percent"%>
+  </div>
   <input type="hidden" name="type" value="Swap">
   <div class="clearfix"></div>
-  <%=f.submit :send_request, :class=> "recuest-field"%>
+  <%=f.submit :send_request%>
 <%end%>

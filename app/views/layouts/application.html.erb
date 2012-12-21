@@ -94,7 +94,7 @@
               </a>
             </li>
             <li id="navigation-calendar">
-              <a href="/calendar.html">
+              <a href="/requests">
                 <span class="box">
                   <i class="radmin-icon radmin-calendar"></i>
                 </span>
@@ -210,7 +210,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
-
+    <%= yield :js %>
   </body>
 
   <%else%>

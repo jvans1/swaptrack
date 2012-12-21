@@ -4,6 +4,7 @@ class Prize < ActiveRecord::Base
   belongs_to :recuest_receiver_prize, :class_name =>"Swap",  :foreign_key=>"receiver_prize_id"
   belongs_to :tournament
   belongs_to :user 
+  validates_presence_of :amount
 
 end
 
